@@ -1,5 +1,4 @@
 <div class="container text-center">
-<h4>Prueba rama 3<h4>
 <div class="row" id="menu-home">
   <% if user_signed_in? %>
     <div class="col-md-8 col-lg-6 B" id="inside">
@@ -47,7 +46,13 @@
       <%end%>
     </div>
     <%end%>
-    <%end%>
+  <%else%>
+  <div class="row">
+    <div class="col-md-12">
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
+  </div>
+  <%end%>
 
 </div>
 </div>
