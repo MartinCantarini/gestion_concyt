@@ -1,0 +1,107 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+*{
+	font-family: 'Roboto Slab', serif;
+}
+#navbar-page{
+	background-color: #414042;
+}
+#footer_black{
+	background-color: #414042;
+	color:#f2f2f2;
+}
+#footer_black h1{
+	color: #9aca3c;
+}
+#footer_black a{
+	color: #999;
+}
+#footer_black a:hover{
+	text-decoration: none;
+	color:#ffffff;
+}
+#spam-little{
+	font-size: 0.7em;
+	color: #999;
+}
+#campo-obligatorio{
+	color:red;
+}
+#campo-ayuda{
+	color:#585858;
+	font-size: 0.7em;
+}
+#campo-sugerencia{
+	color:red;
+	font-size: 0.7em;
+}
+#input-responsive{
+	width:100%;
+	background-color: #eee;
+	color:green;
+}
+#input-medio{
+	width: 50%;
+}
+#input-chico{
+	width: 25%;
+}
+#label-formulario{
+	font-family: 'Roboto Slab', serif;
+	color:red;
+}
+#poster_thumb{
+	width: 200px;
+	height: 400px;
+}
+#icon-home{
+	padding-top: 0px;
+	width: 30px;
+	height: 30px;
+}
+#label-green{
+	color:#6A912B;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+#panel-login{
+	background-color: #EFEFEF;
+	margin-top: 25px;
+}
+
+/*Menu del home*/
+#inside,
+#inside-md,
+#inside-sm{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color:#FFFFFF;
+}
+#inside{
+font-size: 55px;
+}
+#inside-md{
+  font-size: 25px;
+}
+
+#inside-sm{
+  font-size: 20px;
+}
+
+#inside a,
+#inside-md a,
+#inside-sm a{
+	color:#414042;
+	text-decoration:none;
+}
+#inside> a:hover,
+#inside-sm > a:hover,
+#inside-md > a:hover
+{
+	color:#6A912B;
+	text-decoration:none;
+}
+#menu-home > div {border:10px solid white}
+.B {background:#eee; height:200px}
+.G {background:#eee; height:100px}
+.O {background:#eee; height:100px}

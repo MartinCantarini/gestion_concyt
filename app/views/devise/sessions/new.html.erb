@@ -1,0 +1,53 @@
+<div class="container text-center">
+
+<div class="row">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-4">
+  <h2>Entrar</h2>
+  <br />
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true,class: "form-control" %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label 'Contraseña' %><br />
+    <%= f.password_field :password, autocomplete: "off",class: "form-control" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.label 'recordarme' %>&nbsp;&nbsp;<%= f.check_box :remember_me %><br />
+
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Continuar",class: "btn btn-default" %>
+  </div>
+  <%= render "devise/shared/links" %>
+  </div>
+  <div class="col-md-6">
+  <div class="panel panel-default" id="panel-login">
+    <div class="panel-body">
+      <h4>Bienvenido al Gestor de Usuarios, Pósters y Certificados para el Congreso Científica Técnológico de la Provincia de Buenos Aires!</h4><br />
+      <h5 style="text-align: left;">Através de este sistema usted podrá:</h5><br />
+      <ul style="text-align: left;" >
+        <em>
+        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m</li>
+        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m</li>
+        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m</li>
+        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m</li>
+        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m</li>
+        </em>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-1">
+  </div>
+<% end %>
+</div>
+</div>

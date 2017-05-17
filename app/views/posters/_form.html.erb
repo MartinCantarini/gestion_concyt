@@ -1,0 +1,103 @@
+<div class="col-md-12 ">
+<hr />
+</div>
+<%= form_for(@poster, :html => {:class => "form-horizontal center", multipart: true}) do |p| %>
+  <div class="col-md-6 col-xs-12">
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label 'Seleccionar plantilla' %><br>
+    <%= p.select :formato,
+    options_from_collection_for_select(Format.all, "id", "nombre", p.object.formato),{ 
+    prompt: "Seleccionar"},{class: "form-control", required: true} %>
+  </p>
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label :titulo %><spam id="campo-ayuda"> (máximo de 100 caracteres)</spam><br>
+    <%= p.text_field :titulo, id:'input-responsive', class: 'form-control', required: true%>
+  </p>
+  </div>
+  <div class="col-md-6 col-xs-12">
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label 'Logo' %><br>
+    <div id="logo_preview_last"><%= image_tag @poster.logo.url(:thumb) , id: 'logo_thumb'%></div>
+    <div id="logo_preview_now"></div>
+    <%= p.file_field :logo%>
+    <spam id="campo-sugerencia"> (Dimensiones ideales: 545x125)</spam>
+    <hr />
+    <div id="target">
+    </div>
+  </p>
+  <div id="imagenes_formato_1" style="<%= 'display: none;' if @poster.formato == '2' %>">
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label 'Primera Imagen'%><br>
+    <div id="img1a_preview_last"><%= image_tag @poster.img1a.url(:thumb)%></div>
+    <div id="img1a_preview_now"></div>
+    
+    <%= p.file_field :img1a%>
+    <spam id="campo-sugerencia"> (Dimensiones ideales: 795x525)</spam>
+    <hr />
+  </p>
+   <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label 'Segunda Imagen'%><br>
+    <div id="img1b_preview_last"><%= image_tag @poster.img1b.url(:thumb)%></div>
+    <div id="img1b_preview_now"></div>
+    
+    <%= p.file_field :img1b%>
+    <spam id="campo-sugerencia"> (Dimensiones ideales: 795x525)</spam>
+    <hr />
+  </p>
+  </div>
+  <div id="imagenes_formato_2" style="<%= 'display: none;' if @poster.formato == '1' %>">
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label 'Imagen Principal'%><br>
+    <div id="img2_preview_last">
+      <%= image_tag @poster.img2.url(:thumb)%>
+    </div>
+    <div id="img2_preview_now">
+      
+    </div>
+    <%= p.file_field :img2 %>
+    <spam id="campo-sugerencia"> (Dimensiones ideales:1126x730)</spam>
+    <hr />
+  </p>
+  </div>
+  </div>
+  <div class="col-md-12 ">
+  <hr />
+  </div>
+  <div class="col-md-6 col-xs-12">
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label :introduccion %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
+    <%= p.text_area :introduccion, id:'input-responsive', class: 'form-control',required: true%>
+  </p>
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label :objetivos %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
+    <%= p.text_area :objetivos , id:'input-responsive', class: 'form-control',required: true%>
+  </p>
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label :metodologia %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
+    <%= p.text_area :metodologia , id:'input-responsive', class: 'form-control',required: true%>
+  </p>
+  
+  </div>
+  <div class="col-md-6 col-xs-12">
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label :resultados %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
+    <%= p.text_area :resultados , id:'input-responsive', class: 'form-control',required: true%>
+  </p>
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label :conclusiones %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
+    <%= p.text_area :conclusiones, id:'input-responsive', class: 'form-control',required: true%>
+  </p>
+  </div>
+  <div class="col-md-12">
+    <p>
+    <center>
+      <%= p.submit 'Guardar', class: 'btn btn-success', id:'input-chico'%><br><br>
+      <%= link_to 'Cancelar',:root, class: 'btn btn-default', id:'input-chico'%>
+    </center>
+    </p>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  <%=render 'form_logic.js.erb'%>
+</script>

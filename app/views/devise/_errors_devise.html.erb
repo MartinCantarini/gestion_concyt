@@ -1,0 +1,8 @@
+<%if !resource.errors.empty?%>
+    <div class="panel panel-danger">
+    <div class="panel-heading">Por favor corrija los siguientes errores antes de continuar:</div>
+    <div class="panel-body"> <%= devise_error_messages! %><br /></div>
+    </div>
+<%else%>
+    <p>Por favor complete la siguiente información</p><br />
+<%end%>

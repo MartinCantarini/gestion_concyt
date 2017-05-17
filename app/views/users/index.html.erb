@@ -1,0 +1,27 @@
+<div class="container text-center">    
+  <h3>Usuario Registrados</h3><br>
+  <hr />
+</div>  
+<div class="container text-left">    
+  <div class="row">
+  <div class="col-md-12">
+  	<p><spam id="label-green">Cantidad de Inscriptos: </spam><%=@cantidad_usuarios%></p>
+  </div>
+  <div class="col-md-12">
+  	<table class="table table-bordered">
+  		<tr>
+  			<th>Nombre</th>
+  			<th>Apellido</th>
+  			<th>Email</th>
+  		</tr>
+  		<%@usuarios.each do |u|%>
+  		<tr>
+  			<td><%='nombre'%></td>
+  			<td><%='apellido'%></td>
+  			<td><%=u.email%></td>
+  		</tr>
+  		<%end%>
+	</table>
+  </div>   
+  </div>
+</div>

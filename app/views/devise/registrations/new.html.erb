@@ -1,0 +1,62 @@
+<div class="container text-left">
+<div class="row">
+  <div class="col-md-2">
+    &nbsp;
+  </div>
+  <div class="col-md-10">
+    <h2>Registrarse</h2>
+    <br />
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%=render 'devise/errors_devise'%>
+  </div>
+  <div class="col-md-2">
+    &nbsp;
+  </div>
+  <div class="col-md-4">
+    <div class="field">
+      <%= f.label :nombre %><br />
+      <%= f.text_field :nombre,  :required => true,class: "form-control"%>
+    </div>
+    <div class="field">
+      <%= f.label :apellido %><br />
+      <%= f.text_field :apellido,  :required => true,class: "form-control"%>
+    </div>
+    <div class="field">
+        <%= f.label :tipo_dni %><br />
+        <%= f.select :tipo_dni, options_from_collection_for_select(Document.all, "id", "nombre"),{prompt: "Seleccionar"},{:required => true,class: "form-control"}%>
+    </div>
+    <div class="field">
+        <%= f.label :dni %><br />
+        <%= f.number_field :dni,:required => true, class: "form-control"%>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email,  :required => true,class: "form-control"%>
+    </div>
+    <div class="field">
+      <%= f.label 'Contraseña' %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
+      <% end %><br />
+      <%= f.password_field :password, :required => true,class: "form-control"%>
+    </div>
+    <div class="field">
+      <%= f.label 'Confirmar contraseña' %><br />
+      <%= f.password_field :password_confirmation,  :required => true,class: "form-control"%><br />
+    </div>
+    <center>
+    <br />
+    <div class="actions">
+      <%= f.submit "Continuar",class: "btn btn-default",data: { turbolinks: false } %>
+    </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+    </center>
+    </div>
+    <div class="col-md-2">
+    </div>
+</div>
+
+</div>
