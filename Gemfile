@@ -70,4 +70,3 @@ gem 'jquery-ui-rails'
 gem "jquery-validation-rails"
 
 gem 'rails-i18n', '~> 5.0.0'
-gem 'jquery-turbolinks'

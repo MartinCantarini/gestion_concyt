@@ -1,4 +1,65 @@
-<div class="container text-center">
+<!-- Para smartphones -->
+<div class="container text-center hidden-lg hidden-md hidden-sm">
+<div class="row" id="menu-home">
+  <% if user_signed_in? %>
+    <div class="col-xs-12" id="inside-sm">
+      <%=link_to user_path(current_user.id) do %>
+        <p style="margin-top: 50px;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mi perfil</p>
+      <%end%>
+    </div>
+    <%if current_user.registro_completo%>
+    <%if @tiene_poster%>
+    <div class="col-xs-12" id="inside-sm">
+        <%=link_to poster_path(Poster.where('user_id = ?',current_user.id).first.id) do%>
+          <p style="margin-top: 25px;"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Mi póster</p>
+        <%end%>
+      </div>
+    <%else%>
+      <div class="col-xs-12" id="inside-sm">
+        <%=link_to new_poster_path do%>
+          <p style="margin-top: 25px;"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Iniciar póster</p>
+        <%end%>
+      </div>
+    <%end%>
+    <div class="col-xs-12" id="inside-sm">
+      <%=link_to '#' do%>
+        <p style="margin-top: 20px;"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Certificado de Asistencia</p>
+      <%end%>
+    </div>
+    <div class="col-xs-12" id="inside-sm">
+      <%=link_to '#' do%>
+        <p style="margin-top: 25px;"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Novedades</p>
+      <%end%>
+    </div>
+    <div class="col-xs-12" id="inside-sm">
+      <%=link_to '#' do%>
+        <p style="margin-top: 25px;"><span class="glyphicon glyphicon-list-alt"></span> Listado de Inscriptos</p>
+      <%end%>
+    </div>
+    <div class="col-xs-12" id="inside-sm">
+      <%=link_to '#' do%>
+        <p style="margin-top: 25px;"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Estadísticas</p>
+      <%end%>
+    </div>
+    <div class="col-xs-12" id="inside-sm">
+      <%=link_to '#' do%>
+        <p style="margin-top: 25px;"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> ABM</p>
+      <%end%>
+    </div>
+    <%end%>
+  <%else%>
+  <div class="row">
+    <div class="col-xs-12" id="inside-sm">
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
+  </div>
+  <%end%>
+
+</div>
+</div>
+
+<!-- Para desktop y tablets -->
+<div class="container text-center hidden-xs">
 <div class="row" id="menu-home">
   <% if user_signed_in? %>
     <div class="col-md-8 col-lg-6 B" id="inside">
@@ -21,7 +82,7 @@
       </div>
     <%end%>
     <div class="col-md-4 col-lg-3 G" id="inside-sm">
-      <%=link_to '#' do%>
+      <%=link_to others_proximamente_path do%>
         <p style="margin-top: 20px;"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Certificado de Asistencia</p>
       <%end%>
     </div>

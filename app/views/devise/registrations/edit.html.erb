@@ -42,12 +42,8 @@
         <%= f.label 'Contraseña actual' %> <i>(necesaria para efectuar los cambios)</i><br />
         <%= f.password_field :current_password, :required => true,class: "form-control",autocomplete: "off" %><br />
       </div>
-    <div class="actions">
-      <br />
-      <%= f.submit "Continuar" ,class: 'btn btn-success'%>
-    </div>
     <br />
-    <%= link_to "Volver", :back %>
+
     </div>
     <div class="col-md-4">
     <div class="field">
@@ -63,25 +59,30 @@
       <%= f.label :organismo %><br />
       <%= f.select :organismo, options_from_collection_for_select(Organism.all, "id", "nombre", f.object.organismo),{prompt: "Seleccionar"},{class: "form-control", required: true} %><br />
     </div>
-    <div class="field">
-      <%= f.label :universidad %><br />
-      <%= f.select :universidad,  options_from_collection_for_select(College.all, "id", "nombre", f.object.universidad),{prompt: "Seleccionar"},{class: "form-control", required: true} %><br />
-    </div>
-    <div class="field">
-      <%= f.label :centro %><br />
-      <%= f.select :centro, options_from_collection_for_select(Center.all, "id", "nombre", f.object.centro),{prompt: "Seleccionar"},{class: "form-control", required: true}%><br />
-    </div>
     <div class="field" id="div_otro_organismo" style="display: none">
       <%= f.label :otro_organismo %><br />
       <%= f.text_field :otro_organismo,:required => true,class: "form-control"%><br />
+    </div>
+    <div class="field">
+      <%= f.label :universidad %><br />
+      <%= f.select :universidad,  options_from_collection_for_select(College.all, "id", "nombre", f.object.universidad),{prompt: "Seleccionar"},{class: "form-control", required: true} %><br />
     </div>
     <div class="field" id="div_otra_universidad" style="display: none">
       <%= f.label :otra_universidad %><br />
       <%= f.text_field :otra_universidad, :required => true,class: "form-control"%><br />
     </div>
+    <div class="field">
+      <%= f.label :centro %><br />
+      <%= f.select :centro, options_from_collection_for_select(Center.all, "id", "nombre", f.object.centro),{prompt: "Seleccionar"},{class: "form-control", required: true}%><br />
+    </div>
     <div class="field" id="div_otro_centro" style="display: none">
       <%= f.label :otro_centro %><br />
       <%= f.text_field :otro_centro, :required => true,class: "form-control"%><br />
+    </div>
+    <div class="actions">
+      <br />
+      <%= f.submit "Continuar" ,class: 'btn btn-success',data: { turbolinks: false } %><br /><br />
+      <%= link_to "Volver", :back %>
     </div>
     <br>
 
@@ -102,11 +103,12 @@
     </div>
     <div class="field">
       <%= f.label 'Confirmar contraseña' %><br />
-      <%= f.password_field :password_confirmation, :required => true,class: "form-control",autocomplete: "off" %>
+      <%= f.password_field :password_confirmation, class: "form-control",autocomplete: "off" %>
     </div>
     </div>
     <a src="#" class="btn btn-info btn-sm" id="hide">No cambiar contraseña</a>
     <a src="#" class="btn btn-danger btn-sm" id="show">Cambiar contraseña</a><br />
+
   </div>
 
 <% end %>

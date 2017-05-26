@@ -1,6 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+/*@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
 *{
 	font-family: 'Roboto Slab', serif;
+}*/
+* {
+ font-family: 'Ubuntu', sans-serif;
 }
 #links_compartidos_devise > a{
 		color: green;
@@ -119,3 +122,11 @@ font-size: 55px;
 .B {background:#eee; height:200px}
 .G {background:#eee; height:100px}
 .O {background:#eee; height:100px}
+
+.dropdown-menu > li > a{
+	background-color: #414042;
+}
+.dropdown-menu > li > a:hover{
+	background-color: #414042;
+	color: red;
+}

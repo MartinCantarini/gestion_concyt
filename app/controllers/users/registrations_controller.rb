@@ -9,7 +9,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    
     super
   end
 
@@ -66,7 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         if usuario.registro_completo!=true
           usuario.registro_completo=true
           usuario.save
-        end  
+        end
         user_path(current_user.id)
     end
 end

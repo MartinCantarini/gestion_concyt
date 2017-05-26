@@ -1,6 +1,26 @@
 class UsersController < ApplicationController
   def show
     @usuario=User.find(params[:id])
+    if @usuario.registro_completo==true
+      @participacion=Participation.getParticipacion(@usuario.tipo_participacion);
+      if !@usuario.tipo_beca.blank?
+        @beca=Scholarship.getBeca(tipo_beca);
+      else
+        @beca='No posee'
+      end
+      @organismo=Organism.getOrganismo(@usuario.organismo);
+      if @organismo=='otro'
+        @organismo=@usuario.otro_organismo
+      end
+      @universidad=College.getUniversidad(@usuario.universidad);
+      if @universidad=='otra'
+        @universidad=@usuario.otra_universidad
+      end
+      @centro=Center.getCentro(@usuario.centro);
+      if @centro=='otro'
+        @centro=@usuario.otro_centro
+      end
+    end
   end
 
   def index
