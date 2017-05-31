@@ -37,11 +37,6 @@
       <%= f.label 'Teléfono' %><br />
       <%= f.text_field :telefono,{class: "form-control",required: true}%><br />
     </div>
-
-      <div class="field">
-        <%= f.label 'Contraseña actual' %> <i>(necesaria para efectuar los cambios)</i><br />
-        <%= f.password_field :current_password, :required => true,class: "form-control",autocomplete: "off" %><br />
-      </div>
     <br />
 
     </div>
@@ -78,6 +73,10 @@
     <div class="field" id="div_otro_centro" style="display: none">
       <%= f.label :otro_centro %><br />
       <%= f.text_field :otro_centro, :required => true,class: "form-control"%><br />
+    </div>
+    <div class="field">
+      <%= f.label 'Contraseña actual' %> <i>(necesaria para efectuar los cambios)</i><br />
+      <%= f.password_field :current_password, :required => true,class: "form-control",autocomplete: "off" %><br />
     </div>
     <div class="actions">
       <br />

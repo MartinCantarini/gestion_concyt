@@ -62,11 +62,11 @@ gem 'pry'
 gem "paperclip", "~> 5.0.0"
 #DEBUG
 gem 'hirb'
-#AUTENTICACIÓN
+#AUTENTICACIÓN, AUTORIZACIÓN y ROLES
 gem 'devise'
 #JqueryUI
 gem 'jquery-ui-rails'
 #Validación del lado del cliente
 gem "jquery-validation-rails"
-
+#Idiomas
 gem 'rails-i18n', '~> 5.0.0'

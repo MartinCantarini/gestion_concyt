@@ -6,13 +6,16 @@
   <p>
     <spam id="campo-obligatorio">* </spam><%= p.label 'Seleccionar plantilla' %><br>
     <%= p.select :formato,
-    options_from_collection_for_select(Format.all, "id", "nombre", p.object.formato),{ 
+    options_from_collection_for_select(Format.all, "id", "nombre", p.object.formato),{
     prompt: "Seleccionar"},{class: "form-control", required: true} %>
   </p>
   <p>
     <spam id="campo-obligatorio">* </spam><%= p.label :titulo %><spam id="campo-ayuda"> (máximo de 100 caracteres)</spam><br>
     <%= p.text_field :titulo, id:'input-responsive', class: 'form-control', required: true%>
   </p>
+  <!-- <p>
+    <%= p.collection_select(:user_ids, User.all, :id, :nombre, {:prompt => "Please Select a Sector",class: 'form-control'}, {:multiple => true}) %>
+  </p> -->
   </div>
   <div class="col-md-6 col-xs-12">
   <p>
@@ -30,7 +33,7 @@
     <spam id="campo-obligatorio">* </spam><%= p.label 'Primera Imagen'%><br>
     <div id="img1a_preview_last"><%= image_tag @poster.img1a.url(:thumb)%></div>
     <div id="img1a_preview_now"></div>
-    
+
     <%= p.file_field :img1a%>
     <spam id="campo-sugerencia"> (Dimensiones ideales: 795x525)</spam>
     <hr />
@@ -39,7 +42,7 @@
     <spam id="campo-obligatorio">* </spam><%= p.label 'Segunda Imagen'%><br>
     <div id="img1b_preview_last"><%= image_tag @poster.img1b.url(:thumb)%></div>
     <div id="img1b_preview_now"></div>
-    
+
     <%= p.file_field :img1b%>
     <spam id="campo-sugerencia"> (Dimensiones ideales: 795x525)</spam>
     <hr />
@@ -52,7 +55,7 @@
       <%= image_tag @poster.img2.url(:thumb)%>
     </div>
     <div id="img2_preview_now">
-      
+
     </div>
     <%= p.file_field :img2 %>
     <spam id="campo-sugerencia"> (Dimensiones ideales:1126x730)</spam>
@@ -76,7 +79,7 @@
     <spam id="campo-obligatorio">* </spam><%= p.label :metodologia %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
     <%= p.text_area :metodologia , id:'input-responsive', class: 'form-control',required: true%>
   </p>
-  
+
   </div>
   <div class="col-md-6 col-xs-12">
   <p>

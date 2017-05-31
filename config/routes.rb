@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-
+  get 'posters/new_pre'
+  get 'posters/join', :to =>'posters#join', as: :join_poster
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   resources :users
   resources :posters
   root 'others#home'
-  #get '/render_poster/:id', :to => 'posters#render_poster', :as => 'render_poster'
   get '/posters/:id/render', :to => 'posters#render_poster', :as => 'render_poster'
   get '/posters/:id/finalizar', :to => 'posters#finalizar_poster', :as => 'finalizar_poster'
   get 'others/proximamente'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/posters/:id/destroy', to: 'posters#destroy', as: :destroy_poster
+  get '*path' => redirect('404.html')
 end
