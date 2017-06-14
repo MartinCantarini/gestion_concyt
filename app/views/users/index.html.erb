@@ -1,8 +1,8 @@
-<div class="container text-center">    
+<div class="container text-center">
   <h3>Usuario Registrados</h3><br>
   <hr />
-</div>  
-<div class="container text-left">    
+</div>
+<div class="container text-left">
   <div class="row">
   <div class="col-md-12">
   	<p><spam id="label-green">Cantidad de Inscriptos: </spam><%=@cantidad_usuarios%></p>
@@ -10,18 +10,25 @@
   <div class="col-md-12">
   	<table class="table table-bordered">
   		<tr>
-  			<th>Nombre</th>
-  			<th>Apellido</th>
-  			<th>Email</th>
+  			<th id="th-columnas">Nombre</th>
+  			<th id="th-columnas">Apellido</th>
+  			<th id="th-columnas">Email</th>
+        <th id="th-columnas">Participación</th>
+        <th id="th-columnas">Tipo Institución</th>
+        <th id="th-columnas">Institución</th>
   		</tr>
   		<%@usuarios.each do |u|%>
   		<tr>
-  			<td><%='nombre'%></td>
-  			<td><%='apellido'%></td>
+  			<td><%=u.nombre%></td>
+  			<td><%=u.apellido%></td>
   			<td><%=u.email%></td>
+        <td><%=Participation.getParticipacion(u.tipo_participacion)%></td>
+        <td><%=Institution.getInstitucion(u.tipo_institucion)%></td>
+        <td><%=u.institucion%></td>
   		</tr>
   		<%end%>
 	</table>
-  </div>   
+  <%= will_paginate @usuarios ,:previous_label => 'anterior', :next_label => 'siguiente'%>
+  </div>
   </div>
 </div>

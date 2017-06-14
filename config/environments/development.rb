@@ -54,16 +54,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name:      'md.cantarini',
-    password:       'alfamega15',
-    domain:         'gmail.com',
-    address:       'smtp.gmail.com',
-    port:          '587',
+    user_name:      'martin.cantarini@cic.gba.gob.ar',
+    password:       'lctdds2012',
+    domain:         'smtp.cic.gba.gob.ar',
+    address:       'smtp.cic.gba.gob.ar',
+    port:          '25',
     authentication: :plain,
     enable_starttls_auto: true
   }
 end
-
-
-
- 

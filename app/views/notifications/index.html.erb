@@ -1,0 +1,57 @@
+<div class="container text-center">
+  <h2>Notificaciones de Presentación de Trabajos</h2><br>
+  <hr />
+</div>
+  <div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover">
+    <tr>
+
+      <th>ID trabajo</th>
+      <th>Cuerpo</th>
+      <th>Sesión</th>
+      <th>Fecha</th>
+      <th></th>
+    </tr>
+    <%@notificaciones_para_organizador.each do |notificacion|%>
+    <%if notificacion.leido==1%>
+      <tr>
+        <td><%=notificacion.presentation_id%></td>
+        <td><%=notificacion.cuerpo%></td>
+        <td>
+        <%if notificacion.session_id==1%>
+          <spam style="color:brown;"><%=Session.getSession(notificacion.session_id)%></spam>
+        <%elsif notificacion.session_id==2%>
+          <spam style="color:blue;"><%=Session.getSession(notificacion.session_id)%></spam>
+        <%elsif notificacion.session_id==3%>
+          <spam style="color:green;"><%=Session.getSession(notificacion.session_id)%></spam>
+        <%else%>
+          <spam style="color:orange;"><%=Session.getSession(notificacion.session_id)%></spam>
+        <%end%></td>
+        <td><%=notificacion.created_at.strftime("%d/%m/%Y")%></td>
+        <td><%=link_to 'ver',notification_path(notificacion.id)%></td>
+      </tr>
+    <%else%>
+      <tr style="background-color:#D9EDF7;">
+        <td><%=notificacion.presentation_id%></td>
+        <td><%=notificacion.cuerpo%></td>
+
+        <td>
+        <%if notificacion.session_id==1%>
+          <spam style="color:brown;"><%=Session.getSession(notificacion.session_id)%></spam>
+        <%elsif notificacion.session_id==2%>
+          <spam style="color:blue;"><%=Session.getSession(notificacion.session_id)%></spam>
+        <%elsif notificacion.session_id==3%>
+          <spam style="color:green;"><%=Session.getSession(notificacion.session_id)%></spam>
+        <%else%>
+          <spam style="color:orange;"><%=Session.getSession(notificacion.session_id)%></spam>
+        <%end%></td>
+        <td><%=notificacion.created_at.strftime("%d/%m/%Y")%></td>
+        <td><%=link_to 'ver',notification_path(notificacion.id)%></td>
+      </tr>
+    <%end%>
+    <%end%>
+    </table>
+    <%= will_paginate @notificaciones_para_organizador ,:previous_label => 'anterior', :next_label => 'siguiente'%>
+  </div>
+</div>

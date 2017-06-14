@@ -1,21 +1,18 @@
-  
+
   $('#poster_formato').change(function () {
     if($(this).val()==parseInt("1"))
-       { 
+       {
        $('#imagenes_formato_1').show();
        $('#imagenes_formato_2').hide();
        <%if @poster.logo.blank?%>
-        alert("logo vacio");
         $('#poster_logo').attr('required', true);
-       <%end%> 
+       <%end%>
        <%if @poster.img1a.blank?%>
-        alert("img1a vacio");
         $('#poster_img1a').attr('required', true);
        <%end%>
        <%if @poster.img1b.blank?%>
-        alert("img1b vacio");
         $('#poster_img1b').attr('required', true);
-       <%end%> 
+       <%end%>
        $('#poster_img2').attr('required', false);
        }
     else
@@ -23,18 +20,16 @@
        $('#imagenes_formato_2').show();
        $('#imagenes_formato_1').hide();
        <%if @poster.logo.blank?%>
-        alert("logo vacio");
         $('#poster_logo').attr('required', true);
-       <%end%> 
+       <%end%>
        <%if @poster.img2.blank?%>
-        alert("img2 vacio"); 
         $('#poster_img2').attr('required', true);
        <%end%>
        $('#poster_img1a').attr('required', false);
        $('#poster_img1b').attr('required', false);
     }
   });
-  
+
   $('#poster_logo').on('change', function(event) {
     $('#logo_preview_last').hide();
     var files = event.target.files;
@@ -51,7 +46,7 @@
     reader.readAsDataURL(image);
     console.log(files);
   });
-  
+
   $('#poster_img1a').on('change', function(event) {
     $('#img1a_preview_last').hide();
     var files = event.target.files;

@@ -1,35 +1,37 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
-    @usuario=User.find(params[:id])
-    if @usuario.id==current_user.id
-      if @usuario.registro_completo==true
+    if User.exists?(params[:id])
+      @usuario=User.find(params[:id])
+      if @usuario.id==current_user.id
         @participacion=Participation.getParticipacion(@usuario.tipo_participacion);
-        if !@usuario.tipo_beca.blank?
-          @beca=Scholarship.getBeca(tipo_beca);
-        else
-          @beca='No posee'
-        end
-        @organismo=Organism.getOrganismo(@usuario.organismo);
-        if @organismo=='otro'
-          @organismo=@usuario.otro_organismo
-        end
-        @universidad=College.getUniversidad(@usuario.universidad);
-        if @universidad=='otra'
-          @universidad=@usuario.otra_universidad
-        end
-        @centro=Center.getCentro(@usuario.centro);
-        if @centro=='otro'
-          @centro=@usuario.otro_centro
-        end
+        @nombre=@usuario.nombre
+        @apellido=@usuario.apellido
+        @tipo_dni=@usuario.tipo_dni
+        @dni=@usuario.dni
+        @institucion=Institution.getInstitucion(@usuario.tipo_institucion)
+        @descripcion_institucion=@usuario.institucion
+        @email=@usuario.email
+        @telefono=@usuario.telefono
+        @fecha_inscripcion=@usuario.created_at.strftime("%d/%m/%Y")
+      else
+        flash[:alert]="Usted no tiene permiso para estar aquí"
+        redirect_to :root
       end
     else
+      flash[:alert]="Usted no tiene permiso para estar aquí"
       redirect_to :root
     end
   end
 
   def index
-    @usuarios=User.all
-    @cantidad_usuarios=User.all.count
+    if current_user.rol==2 or current_user.rol==3
+      @usuarios=User.paginate(:page => params[:page]).order('id ASC')
+      @cantidad_usuarios=User.all.count
+    else
+      flash[:alert]="Usted no tiene permiso para estar aquí"
+      redirect_to :root
+    end
   end
 
   def new

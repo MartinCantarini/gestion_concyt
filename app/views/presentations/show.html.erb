@@ -1,0 +1,91 @@
+<div class="container text-center">
+  <h3>Presentación de Trabajo</h3><br>
+  <div class="row" style="background-color:#eee;">
+    <div class="col-md-12 col-xs-12">
+      <p >Título: <%=@presentacion.titulo%></p>
+      <p>Sesión de Trabajo: <%=Session.getSession(@presentacion.session_id)%></p>
+      <p>Estado de la presentación: <%=State.getStateNombre(@presentacion.state_id)%></p>
+    </div>
+    <div class="col-md-6 col-xs-12">
+    <h4>Trabajo</h4>
+    <%if @presentacion.trabajo.present?%>
+      <%=link_to 'Ver',@presentacion.trabajo.url%>
+    <%else%>
+      <p style="color:red;font-size:12px;">(Aún no fue cargado)</p>
+    <%end%>
+    </div>
+    <div class="col-md-6 col-xs-12">
+    <h4>Resumen</h4>
+    <%if @presentacion.resumen.present?%>
+      <%=link_to 'Ver',@presentacion.resumen.url%>
+    <%else%>
+      <p style="color:red;font-size:12px;">(Aún no fue cargado)</p>
+    <%end%>
+    </div>
+    <div class="col-md-12 col-xs-12">
+      <%if @puede_modificar%>
+        <%=link_to 'Modificar', edit_presentation_path(@presentacion.id)%>
+      <%end%>
+    </div>
+  </div>
+</div>
+<%if @puede_enviar_correccion%>
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+  <br /><br />
+  </div>
+  <div class="col-md-2 col-xs-12">
+  </div>
+  <div class="col-md-4 col-xs-12">
+    <%=link_to 'Aprobar trabajo', change_state_presentation_path(:id => @presentacion.id, :id_state=> 2),class:"btn btn-default"%>
+  </div>
+  <div class="col-md-4 col-xs-12">
+    <%=link_to 'Seleccionar trabajo para exponer', change_state_presentation_path(:id => @presentacion.id, :id_state=> 3), class:"btn btn-success"%>
+  </div>
+  <div class="col-md-2 col-xs-12">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+  <br /><br />
+  </div>
+  <div class="col-md-2 col-xs-12">
+  </div>
+  <div class="col-md-8 col-xs-12">
+  <%= form_tag(new_notification_path,:method => "get", id: "search-form") do %>
+  <p>
+   <label-azul>Corrección:</label-azul> <%= text_area_tag :cuerpo, params[:cuerpo], class:"form-control",placeholder:"car3"%><br>
+   <%= submit_tag "enviar" , class:"btn btn-primary"%>
+   <%= hidden_field_tag :presentation_id , params[:id] %>
+  </p>
+  <% end %>
+  </div>
+  <div class="col-md-2 col-xs-12">
+  </div>
+</div>
+<%end%>
+<div class="row">
+  <div class="col-md-4 col-xs-12">
+  <h3 style="color:green;">Notificaciones de Correcciones</h3></strong>
+  </div>
+  <div class="col-md-8 col-xs-12">
+  </div>
+  <div class="col-md-12 col-xs-12">
+    <%if !@notificaciones.blank?%>
+      <table class="table table-hover">
+      <tr>
+        <th>Cuerpo</th>
+        <th>Fecha</th>
+      </tr>
+      <%@notificaciones.each do |notificacion|%>
+      <tr>
+        <td><%=notificacion.cuerpo%></td>
+        <td><%=notificacion.created_at%></td>
+      </tr>
+      <%end%>
+      </table>
+    <%else%>
+      <p>Su trabajo no posee correcciones</p>
+    <%end%>
+  </div>
+</div>

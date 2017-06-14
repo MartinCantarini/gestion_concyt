@@ -70,3 +70,5 @@ gem 'jquery-ui-rails'
 gem "jquery-validation-rails"
 #Idiomas
 gem 'rails-i18n', '~> 5.0.0'
+#Paginación
+gem 'will_paginate', '~> 3.1.0'

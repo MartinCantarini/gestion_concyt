@@ -1,6 +1,3 @@
-<div class="col-md-12 ">
-<hr />
-</div>
 <%= form_for(@poster, :html => {:class => "form-horizontal center", multipart: true}) do |p| %>
   <div class="col-md-6 col-xs-12">
   <p>
@@ -11,14 +8,50 @@
   </p>
   <p>
     <spam id="campo-obligatorio">* </spam><%= p.label :titulo %><spam id="campo-ayuda"> (máximo de 100 caracteres)</spam><br>
-    <%= p.text_field :titulo, id:'input-responsive', class: 'form-control', required: true%>
+    <%= p.text_field :titulo,:maxlength => 100, id:'input-responsive', class: 'form-control', required: true%>
   </p>
-  <!-- <p>
-    <%= p.collection_select(:user_ids, User.all, :id, :nombre, {:prompt => "Please Select a Sector",class: 'form-control'}, {:multiple => true}) %>
-  </p> -->
-  </div>
-  <div class="col-md-6 col-xs-12">
   <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label "Sesión de Trabajo" %><br>
+    <%= p.select :session_id,
+    options_from_collection_for_select(Session.all, "id", "nombre", p.object.session_id),{
+    prompt: "Seleccionar una Sesión de Trabajo"},{class: "form-control"} %>
+  <p>
+    <%= p.label :autor %><br>
+    <%= p.text_field :autor,:maxlength => 40, id:'input-responsive', class: 'form-control'%>
+  </p>
+  <p>
+    <%= p.label 'Coautor 1°' %><br>
+    <%= p.text_field :coautor1,:maxlength => 40, id:'input-responsive', class: 'form-control'%>
+  </p>
+  <p>
+    <%= p.label 'Coautor 2°' %><br>
+    <%= p.text_field :coautor2,:maxlength => 40, id:'input-responsive', class: 'form-control'%>
+  </p>
+  <p>
+    <%= p.label 'Coautor 3°' %><br>
+    <%= p.text_field :coautor3,:maxlength => 40, id:'input-responsive', class: 'form-control'%>
+  </p>
+  <p>
+    <%= p.label 'Coautor 4°' %><br>
+    <%= p.text_field :coautor4,:maxlength => 40, id:'input-responsive', class: 'form-control'%>
+  </p>
+  <p>
+    <%= p.label 'Coautor 5°' %><br>
+    <%= p.text_field :coautor5,:maxlength => 40, id:'input-responsive', class: 'form-control'%>
+  </p>
+  <p>
+    <%= p.label 'Institución' %><br>
+    <%= p.text_field :institucion,:maxlength => 50, id:'input-responsive', class: 'form-control'%>
+  </p>
+  <p>
+    <%= p.label :introduccion %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
+    <%= p.text_area :introduccion,:maxlength => 400, id:'input-responsive', class: 'form-control'%>
+  </p>
+  </div>
+  <div class="col-md-6 col-xs-12" style="background-color:#eee;">
+  <h3>Imágenes <span class="glyphicon glyphicon-picture" aria-hidden="true"></span></h3>
+  <p>
+    <hr />
     <spam id="campo-obligatorio">* </spam><%= p.label 'Logo' %><br>
     <div id="logo_preview_last"><%= image_tag @poster.logo.url(:thumb) , id: 'logo_thumb'%></div>
     <div id="logo_preview_now"></div>
@@ -30,6 +63,7 @@
   </p>
   <div id="imagenes_formato_1" style="<%= 'display: none;' if @poster.formato == '2' %>">
   <p>
+    <hr />
     <spam id="campo-obligatorio">* </spam><%= p.label 'Primera Imagen'%><br>
     <div id="img1a_preview_last"><%= image_tag @poster.img1a.url(:thumb)%></div>
     <div id="img1a_preview_now"></div>
@@ -39,6 +73,7 @@
     <hr />
   </p>
    <p>
+     <hr />
     <spam id="campo-obligatorio">* </spam><%= p.label 'Segunda Imagen'%><br>
     <div id="img1b_preview_last"><%= image_tag @poster.img1b.url(:thumb)%></div>
     <div id="img1b_preview_now"></div>
@@ -50,6 +85,7 @@
   </div>
   <div id="imagenes_formato_2" style="<%= 'display: none;' if @poster.formato == '1' %>">
   <p>
+    <hr />
     <spam id="campo-obligatorio">* </spam><%= p.label 'Imagen Principal'%><br>
     <div id="img2_preview_last">
       <%= image_tag @poster.img2.url(:thumb)%>
@@ -68,27 +104,23 @@
   </div>
   <div class="col-md-6 col-xs-12">
   <p>
-    <spam id="campo-obligatorio">* </spam><%= p.label :introduccion %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
-    <%= p.text_area :introduccion, id:'input-responsive', class: 'form-control',required: true%>
+    <%= p.label :objetivos %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
+    <%= p.text_area :objetivos ,:maxlength => 400, id:'input-responsive', class: 'form-control'%>
   </p>
   <p>
-    <spam id="campo-obligatorio">* </spam><%= p.label :objetivos %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
-    <%= p.text_area :objetivos , id:'input-responsive', class: 'form-control',required: true%>
-  </p>
-  <p>
-    <spam id="campo-obligatorio">* </spam><%= p.label :metodologia %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
-    <%= p.text_area :metodologia , id:'input-responsive', class: 'form-control',required: true%>
+    <%= p.label :metodologia %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
+    <%= p.text_area :metodologia ,:maxlength => 400, id:'input-responsive', class: 'form-control'%>
   </p>
 
   </div>
   <div class="col-md-6 col-xs-12">
   <p>
-    <spam id="campo-obligatorio">* </spam><%= p.label :resultados %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
-    <%= p.text_area :resultados , id:'input-responsive', class: 'form-control',required: true%>
+    <%= p.label :resultados %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
+    <%= p.text_area :resultados ,:maxlength => 400, id:'input-responsive', class: 'form-control'%>
   </p>
   <p>
-    <spam id="campo-obligatorio">* </spam><%= p.label :conclusiones %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
-    <%= p.text_area :conclusiones, id:'input-responsive', class: 'form-control',required: true%>
+    <%= p.label :conclusiones %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>
+    <%= p.text_area :conclusiones,:maxlength => 400, id:'input-responsive', class: 'form-control'%>
   </p>
   </div>
   <div class="col-md-12">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GeUPC - CONCYT 2017</title>
+  <title>Sistema de Gestión - CONCYT 2017</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -24,13 +24,15 @@
 <body>
 <header>
     <figure>
-        <img src="/header-concyt.jpg" alt="Logo" style="width:100%;overflow:hidden;"/>
+        <a href="http://concyt.cic.gba.gob.ar"><img src="/header-concyt.jpg" alt="Logo" style="width:100%;overflow:hidden;"/></a>
     </figure>
 </header>
 <%=render 'layouts/navbar'%>
 <%=render 'layouts/notificaciones'%>
-<%=yield%><br>
-
+<div class="container">
+<%=yield%>
+<br>
+</div>
 <footer class="container-fluid text-center" id="footer_black">
   	<div class="row">
   	<div class="col-md-4">
@@ -45,19 +47,20 @@
 		<p>Email: concyt@cic.gba.gob.ar</p>
 		<p>Teléfono: 0221 421-7374</p>
 	</div>
-  <div class="col-md-1">
+  <!-- <div class="col-md-1">
   <br/>
     &nbsp;
-  </div>
-	<div class="col-md-3">
+  </div> -->
+	<div class="col-md-4">
 	<br/>
-  <br/>
-		<img src="/logo_gba_footer.png" class="img-responsive" alt="Cinque Terre">
-	</div>
-  <div class="col-md-1">
+  <center>
+		<p>&nbsp;&nbsp;<img src="/logo_gba_footer.png" class="img-responsive" alt="Cinque Terre"></p>
+  </center>
+  </div>
+  <!-- <div class="col-md-1">
   <br/>
     &nbsp;
-  </div>
+  </div> -->
 	</div>
 </footer>
 

@@ -1,2 +1,11 @@
-<h1>Posters#create</h1>
-<p>Find me in app/views/posters/create.html.erb</p>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <h4><strong>Codigo de Póster para compartir:</strong></h4>
+      <div class="alert alert-info">
+        <%=@poster.codigo%>
+      </div>
+      <%=link_to "Ir a Editar mi Póster", edit_poster_path(@poster.id)%>
+    </div>
+    <div class="col-md-4"></div>
+</div>

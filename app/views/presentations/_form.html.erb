@@ -1,0 +1,39 @@
+<%= form_for(@presentacion, :html => {:class => "form-horizontal center", multipart: true}) do |p| %>
+  <div class="col-md-6 col-xs-12">
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label "Eje Temático" %><br>
+    <%= p.select :session_id,
+    options_from_collection_for_select(Session.all, "id", "nombre", p.object.session_id),{
+    prompt: "Seleccionar el Eje Temático que se corresponde con su Trabajo"},{class: "form-control", required:true} %>
+  </p>
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label "Titulo" %><br>
+    <%= p.text_field :titulo ,class: "form-control",required:true%>
+  </p>
+  </div>
+  <div class="col-md-6 col-xs-12">
+  <p>
+    <%= p.label :trabajo %>
+    <%= p.file_field :trabajo, required:true%>
+    <spam id="campo-sugerencia"> (Solo se aceptan archivos con formato: .doc y .docx)</spam>
+    <hr />
+  </p>
+  <p>
+    <%= p.label :resumen %>
+    <%= p.file_field :resumen,required:true %>
+    <spam id="campo-sugerencia"> (Solo se aceptan archivos con formato: .doc y .docx)</spam>
+    <hr />
+  </p>
+  </div>
+  <div class="col-md-12 col-xs-12">
+  <p>
+    <div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Atención:</span>
+    Tenga en cuenta que una vez que guarda el trabajo el mismo será enviado a visar por una Comisión.
+    </div>
+    <%= p.submit 'Guardar', class: 'btn btn-success', id:'input-chico'%><br><br>
+  </p>
+  </div>
+  </div>
+<%end%>

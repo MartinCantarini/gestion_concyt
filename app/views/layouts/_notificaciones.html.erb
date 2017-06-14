@@ -10,9 +10,4 @@
       <p class="alert alert-danger" style="font-size:1.0625em;"><strong><span class="glyphicon glyphicon-exclamation-sign"></span> <%= alert %></strong></p>
     </div>
   <% end %>
-  <% if user_signed_in? and !current_user.registro_completo%>
-    <div class="col-md-12">
-      <p class="alert alert-danger" style="font-size:1.1875em;"><strong><span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;&nbsp;<%= 'Es necesario que complete su perfil para finalizar con su incripción al congreso y poder acceder a todas las funciones del sistema' %></strong></p>
-    </div>
-  <%end%>
 </div>

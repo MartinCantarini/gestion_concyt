@@ -1,16 +1,15 @@
-/*@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+@import url('https://fonts.googleapis.com/css?family=Dosis');
 *{
-	font-family: 'Roboto Slab', serif;
-}*/
-* {
- font-family: 'Questrial', sans-serif;
+	font-family: 'Dosis', sans-serif;
+	font-weight: bold;
+	font-size: 18px;
 }
 #links_compartidos_devise > a{
-		color: green;
+		color: #777;
 		font-style: italic;
 }
 #links_compartidos_devise > a:hover{
-	color: green;
+	color: #9aca3c;
 	text-decoration:none;
 	font-weight: bold;
 }
@@ -129,4 +128,11 @@ font-size: 55px;
 .dropdown-menu > li > a:hover{
 	background-color: #414042;
 	color: red;
+}
+#th-columnas{
+	background-color: #088A85;
+	color:#FFFFFF;
+}
+td{
+	font-size: 14px;
 }

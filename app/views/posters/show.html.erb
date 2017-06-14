@@ -2,32 +2,32 @@
   <h2>Mi Póster</h2><br>
   <hr />
   <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
   	<div class="alert alert-danger">
   		<strong>Atención!</strong> Recuerde que una vez finalizado el póster no se podrán hacer mas cambios en el mismo.
-  	</div>
-  </div>
-  <div class="col-md-4">
-  	<div class="alert alert-info">
-  		<strong>Codigo de Póster para compartir:</strong> <%=@poster.codigo%>
   	</div>
   </div>
   <div class="col-md-3">
   </div>
   <div class="col-md-6">
-  		<%= image_tag ("/images/poster/#{@poster.id}/#{@poster.id}.png") ,id:"poster_thumb" %>
-  	<br />
+      <%if @poster.titulo%>
+  		  <%= image_tag ("/images/poster/#{@poster.id}/#{@poster.id}.png") ,id:"poster_thumb" %>
+      <%else%>
+        <%= image_tag ("/images/poster/no_poster.png") ,id:"poster_thumb" %>
+      <%end%>
+    <br />
   	<br />
   	<div class="btn-group btn-group-justified">
-  		<%=link_to "Ver","/images/poster/#{@poster.id}/#{@poster.id}.png",class:"btn btn-success" %>
+  		<%=link_to "Ver","/images/poster/#{@poster.id}/#{@poster.id}.png",target: "_blank",class:"btn btn-success" %>
   		<%if !@finalizado%>
-  			<%=link_to "Editar",edit_poster_path(@poster.id),class:"btn btn-success" %>
-  			<%=link_to "Finalizar",finalizar_poster_path(@poster.id),class:"btn btn-success" %>
-        <%=link_to "Eliminar",destroy_poster_path(@poster.id),class:"btn btn-danger" %>
-    <%else%>
-			<%=link_to "Editar",edit_poster_path(@poster.id),class:"btn btn-success disabled" %>
-			<%=link_to "Finalizar",finalizar_poster_path(@poster.id),class:"btn btn-success disabled" %>
-		<%end%>
+         <%if @poster.titulo%>
+            <%=link_to "Editar",edit_poster_path(@poster.id),class:"btn btn-success" %>
+            <%=link_to "Finalizar",finalizar_poster_path(@poster.id),class:"btn btn-success" %>
+         <%else%>
+            <%=link_to "Comenzar a Editar",edit_poster_path(@poster.id),class:"btn btn-success" %>
+         <%end%>
+         <%=link_to "Eliminar",destroy_poster_path(@poster.id),class:"btn btn-danger" %>
+		  <%end%>
 	</div>
   </div>
   <div class="col-md-3">

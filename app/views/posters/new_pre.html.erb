@@ -1,10 +1,17 @@
 <div class="container text-center">
   <br /><br />
   <div class="col-md-6 col-xs-12">
+      <br><br>
       <%=link_to "Comenzar un Nuevo Póster",new_poster_path,class:"btn btn-success btn-lg" %>
   </div>
   <div class="col-md-6 col-xs-12">
-      <%=link_to "Unirse a un Póster Existente",join_poster_path,class:"btn btn-info btn-lg" %>
+      <h3>Unirse a un Póster Existente</h3><br>
+      <%#=link_to "Unirse a un Póster Existente",join_poster_path,class:"btn btn-info btn-lg" %>
+        <%= form_tag(join_poster_path, :method => "get", id: "join-form") do %>
+        	<%= text_field_tag :c%>
+        	<%= submit_tag "Unirse" , class:"btn btn-default btn-sm"%>
+        <% end %>
+        <spam style="font-size:10px;color:green;">Solicitar Código para Compartir al usuario que creo el póster</spam>
   </div>
   <br /><br />
 </div>

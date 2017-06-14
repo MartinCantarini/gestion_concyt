@@ -62,10 +62,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def after_update_path_for(resource)
         flash[:notice] = "Actualizaste tu cuenta correctamente."
         usuario=current_user
-        if usuario.registro_completo!=true
-          usuario.registro_completo=true
-          usuario.save
-        end
         user_path(current_user.id)
     end
 end

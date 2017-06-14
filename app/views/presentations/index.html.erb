@@ -1,0 +1,36 @@
+<div class="container text-center">
+  <h3>Presentaciones de Trabajo</h3><br>
+  <hr />
+  <div class="row">
+    <div class="col-md-12">
+    	<table class="table table-bordered">
+    		<tr>
+          <th id="th-columnas">Título</th>
+    			<th id="th-columnas">Trabajo</th>
+    			<th id="th-columnas">Resumen</th>
+    			<th id="th-columnas">Sesión de Trabajo</th>
+    		</tr>
+    		<%@presentaciones.each do |p|%>
+    		<tr>
+    			<td><%=link_to p.titulo, presentation_path(p.id)%></td>
+    			<td>
+            <%if p.trabajo.present?%>
+              <%=link_to 'ver',p.trabajo.url%>
+            <%else%>
+              <p style="color:red;font-size:11px;">(Aún no fue cargado)</p>
+            <%end%>
+          </td>
+    			<td>
+            <%if p.resumen.present?%>
+              <%=link_to 'ver',p.resumen.url%>
+            <%else%>
+              <p style="color:red;font-size:11px;">(Aún no fue cargado)</p>
+            <%end%>
+          </td>
+          <td><%=Session.getSession(p.session_id)%></td>
+    		</tr>
+    		<%end%>
+  	</table>
+    </div>
+</div>
+</div>

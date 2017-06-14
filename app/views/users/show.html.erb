@@ -6,20 +6,17 @@
 <div class="container text-left">
   <div class="row">
   <div class="col-md-4">
-  	<p><spam id="label-green">Nombre:</spam> <%=@usuario.nombre%></p>
-  	<p><spam id="label-green">Apellido:</spam> <%=@usuario.apellido%></p>
-  	<p><spam id="label-green">Participación:</spam> <%=@participacion%></p>
-    <p><spam id="label-green">Beca:</spam> <%=@beca%></p>
-  	<p><spam id="label-green">DNI:</spam> <%=@usuario.dni%></p>
-  	<p><spam id="label-green">CUIT:</spam> <%=@usuario.cuit%></p>
-  	<p><spam id="label-green">Email:</spam> <%=@usuario.email%></p>
-  	<p><spam id="label-green">Teléfono:</spam> <%=@usuario.telefono%></p>
+  	<p><spam id="label-green">Nombre:</spam> <%=@nombre%></p>
+  	<p><spam id="label-green">Apellido:</spam> <%=@apellido.upcase %></p>
+  	<p><spam id="label-green">DNI:</spam> <%=@dni%></p>
+  	<p><spam id="label-green">Email:</spam> <%=@email%></p>
+    <p><spam id="label-green">Teléfono:</spam> <%=@telefono%></p>
   </div>
   <div class="col-md-4">
-  	<p><spam id="label-green">Organismo:</spam> <%=@organismo%></p>
-  	<p><spam id="label-green">Universidad:</spam> <%=@universidad%></p>
-  	<p><spam id="label-green">Centro de Investigación:</spam> <%=@centro%></p>
-  	<p><spam id="label-green">Fecha de Registro:</spam> <%=@usuario.created_at.to_formatted_s(:short)%></p>
+    <p><spam id="label-green">Participación:</spam> <%=@participacion%></p>
+    <p><spam id="label-green">Institución:</spam> <%=@institucion%></p>
+    <p><spam id="label-green">Descripción de Institución:</spam> <%=@descripcion_institucion%></p>
+  	<p><spam id="label-green">Fecha de Registro:</spam> <%=@fecha_inscripcion%></p>
   </div>
   <div class="col-md-2">
   		<p><center><%=link_to 'Editar', edit_user_registration_path(@usuario.id), class:'btn btn-primary'%></center></p>
