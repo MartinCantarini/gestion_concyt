@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fuente: MyString
+  formato: MyString
+  titulo: MyString
+  introduccion: MyString
+  objetivos: MyString
+  metodologia: MyString
+  resultados: MyString
+  conclusiones: MyString
+  logo: MyString
+  img1: MyString
+  img2: MyString
+  codigo: MyString
+  finalizado: false
+
+two:
+  fuente: MyString
+  formato: MyString
+  titulo: MyString
+  introduccion: MyString
+  objetivos: MyString
+  metodologia: MyString
+  resultados: MyString
+  conclusiones: MyString
+  logo: MyString
+  img1: MyString
+  img2: MyString
+  codigo: MyString
+  finalizado: false
