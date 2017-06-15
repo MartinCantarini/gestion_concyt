@@ -33,16 +33,21 @@
   <br /><br />
   <div class="panel panel-default" id="panel-login">
     <div class="panel-body">
-      <h4>Bienvenido al Gestor de Usuarios, Pósters y Certificados para el Congreso Científica Técnológico de la Provincia de Buenos Aires!</h4><br />
+      <h4>Bienvenido al Sistema de Gestión del Congreso Científica Técnológico de la Provincia de Buenos Aires</h4><br />
       <h5 style="text-align: left;">A través de este sistema usted podrá:</h5><br />
       <ul style="text-align: left;" >
         <em>
-        <li>Participar del Congreso Científico Tecnológico de La Provincia de Buenos Aires.</li>
-        <li>Presentar su trabajo de Investigación en caso de Ser Investigador o Personal de Apoyo.</li>
+        <li>Inscribirse al Congreso Científico Tecnológico de La Provincia de Buenos Aires.</li>
+        <li>Presentar su trabajo de Investigación en caso de Inscribirse como Autor.</li>
         <li>Generar y Descargar su Póster para exhibir el día del congreso.</li>
         <li>Obtener su Certificado de Asistencia al Congreso.</li>
         </em>
       </ul>
+      <h6 style="text-align: center;">
+        <br />
+        <%t = Time.now%>
+        <%=t.strftime("%d/%m/%Y")%>
+      </h6>
     </div>
   </div>
   </div>
