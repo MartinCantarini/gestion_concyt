@@ -15,5 +15,6 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require jquery-ui
+//= require tinymce
 //= require_tree .
 //= require turbolinks

@@ -51,8 +51,8 @@ Rails.application.configure do
   #config.action_mailer.default_url_options = { host: '0.0.0.0', port: 3000 }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.default_url_options = { :host => 'http://gestion.concyt.cic.gba.gob.ar' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # config.action_mailer.default_url_options = { :host => 'http://gestion.concyt.cic.gba.gob.ar' }
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
   #   user_name:      'martin.cantarini@cic.gba.gob.ar',
@@ -68,7 +68,7 @@ Rails.application.configure do
   address:              'smtp.gmail.com',
   port:                 587,
   user_name:            'inscripcion.concyt@gmail.com',
-  password:             '#',
+  password:             'concyt2017',
   authentication:       'plain',
   enable_starttls_auto: true  }
 end

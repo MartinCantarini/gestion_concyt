@@ -37,13 +37,13 @@ ActiveRecord::Schema.define(version: 20170606144519) do
   end
 
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "leido",              default: 0
-    t.string   "cuerpo"
+    t.integer  "leido",                            default: 0
+    t.text     "cuerpo",             limit: 65535
     t.boolean  "para_administrador"
     t.integer  "presentation_id"
     t.integer  "session_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.index ["presentation_id"], name: "index_notifications_on_presentation_id", using: :btree
     t.index ["session_id"], name: "index_notifications_on_session_id", using: :btree
   end

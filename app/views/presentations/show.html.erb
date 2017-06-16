@@ -1,8 +1,9 @@
+<%= tinymce %>
 <div class="container text-center">
   <h3>Presentación de Trabajo</h3><br>
   <div class="row" style="background-color:#eee;">
     <div class="col-md-12 col-xs-12">
-      <p >Título: <%=@presentacion.titulo%></p>
+      <p>Título: <%=@presentacion.titulo%></p>
       <p>Sesión de Trabajo: <%=Session.getSession(@presentacion.session_id)%></p>
       <p>Estado de la presentación: <%=State.getStateNombre(@presentacion.state_id)%></p>
     </div>
@@ -54,7 +55,7 @@
   <div class="col-md-8 col-xs-12">
   <%= form_tag(new_notification_path,:method => "get", id: "search-form") do %>
   <p>
-   <label-azul>Corrección:</label-azul> <%= text_area_tag :cuerpo, params[:cuerpo], class:"form-control",placeholder:"car3"%><br>
+   <label-azul>Nueva corrección:</label-azul> <br/ ><%= text_area_tag :cuerpo, params[:cuerpo], class:"tinymce"%><br>
    <%= submit_tag "enviar" , class:"btn btn-primary"%>
    <%= hidden_field_tag :presentation_id , params[:id] %>
   </p>
@@ -79,8 +80,9 @@
       </tr>
       <%@notificaciones.each do |notificacion|%>
       <tr>
-        <td><%=notificacion.cuerpo%></td>
-        <td><%=notificacion.created_at%></td>
+        <td><%=notificacion.cuerpo.html_safe%></td>
+        <%date_notification=notificacion.created_at - 3*60*60%>
+        <td><%=date_notification.strftime('%d/%m/%Y - %H:%M:%S')%></td>
       </tr>
       <%end%>
       </table>

@@ -72,3 +72,5 @@ gem "jquery-validation-rails"
 gem 'rails-i18n', '~> 5.0.0'
 #Paginación
 gem 'will_paginate', '~> 3.1.0'
+#Editor de textos enriquecido
+gem 'tinymce-rails'

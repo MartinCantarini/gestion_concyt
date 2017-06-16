@@ -2,7 +2,6 @@
 *{
 	font-family: 'Dosis', sans-serif;
 	font-weight: bold;
-	font-size: 18px;
 }
 #links_compartidos_devise > a{
 		color: #777;
@@ -132,7 +131,4 @@ font-size: 55px;
 #th-columnas{
 	background-color: #088A85;
 	color:#FFFFFF;
-}
-td{
-	font-size: 14px;
 }
