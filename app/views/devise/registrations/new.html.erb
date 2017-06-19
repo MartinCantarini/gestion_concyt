@@ -12,13 +12,29 @@
   <div class="col-md-2">
     &nbsp;
   </div>
-  <div class="col-md-10">
+  <div class="col-md-5">
     <div class="field">
           <%= f.label :tipo_participacion %><br />
           <%= f.select :tipo_participacion, options_from_collection_for_select(Participation.all, "id", "nombre"),{prompt: "Seleccionar"},{:required => true,class: "form-control",style:"width: 360px;"}%><br />
     </div>
   </div>
-
+  <div class="col-md-5">
+    <div id="help_participacion">
+        <div class="panel" style="background-color:#47A6AF;color:#414042;">
+          <div class="panel-heading">Con respecto al tipo de Participación:</div>
+          </div>
+          <div class="panel-body">
+          <p>
+            La participación <strong>Autor</strong> se corresponde con aquellos Usuarios que desean
+            presentar un Trabajo de Investigación y/o Poster.
+          </p>
+          <p>
+            La participación <strong>Asistente</strong> se corresponde con aquellos Usuarios que desean
+            asistir al Congreso y obtener su Certificado de Asistencia.
+          </p>
+          </div>
+      </div>
+  </div>
   <div id="otros_campos_login">
   <div class="col-md-2">
     &nbsp;

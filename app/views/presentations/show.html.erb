@@ -35,13 +35,16 @@
   <div class="col-md-12 col-xs-12">
   <br /><br />
   </div>
-  <div class="col-md-2 col-xs-12">
+  <div class="col-md-3 col-xs-12">
   </div>
-  <div class="col-md-4 col-xs-12">
+  <div class="col-md-2 col-xs-12">
     <%=link_to 'Aprobar trabajo', change_state_presentation_path(:id => @presentacion.id, :id_state=> 2),class:"btn btn-default"%>
   </div>
-  <div class="col-md-4 col-xs-12">
+  <div class="col-md-3 col-xs-12">
     <%=link_to 'Seleccionar trabajo para exponer', change_state_presentation_path(:id => @presentacion.id, :id_state=> 3), class:"btn btn-success"%>
+  </div>
+  <div class="col-md-2 col-xs-12">
+    <%=link_to 'Desaprobar trabajo', change_state_presentation_path(:id => @presentacion.id, :id_state=> 4), class:"btn btn-danger"%>
   </div>
   <div class="col-md-2 col-xs-12">
   </div>

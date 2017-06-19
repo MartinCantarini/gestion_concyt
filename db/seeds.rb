@@ -36,6 +36,7 @@ Institution.create(nombre: 'Otro');
 State.create(nombre: 'Evaluación');
 State.create(nombre: 'Aprobado');
 State.create(nombre: 'Seleccionado para exponer');
+State.create(nombre: 'Desaprobado');
 
 #SESIONES DE TRABAJO
 Session.create(nombre: 'Desarrollo socio-territorial y la planificación urbano-regional frente a los retos hídricos');

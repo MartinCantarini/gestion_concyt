@@ -28,6 +28,11 @@ class PresentationsController < ApplicationController
   def index
     if current_user.rol==2 or current_user.rol==3
       @presentaciones=Presentation.all
+      @cantidad_presentaciones=Presentation.all.count
+      @cantidad_presentaciones_evaluacion=Presentation.where("state_id = ?",1).count
+      @cantidad_presentaciones_aprobados=Presentation.where("state_id = ?",2).count
+      @cantidad_presentaciones_seleccionados=Presentation.where("state_id = ?",3).count
+      @cantidad_presentaciones_desaprobados=Presentation.where("state_id = ?",4).count
     else
       flash[:alert]="Usted no tiene permiso para estar aquí"
       redirect_to :root
