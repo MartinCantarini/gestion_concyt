@@ -1,44 +1,47 @@
-<!-- Para smartphones -->
 <div class="container text-center">
 <div class="row" id="menu-home">
   <!--Usuario que inició sesión-->
-  <% if user_signed_in? %>
+  <%if user_signed_in?%>
     <div class="col-xs-12" id="inside-md">
       <%=link_to user_path(current_user.id) do %>
         <p style="margin-top: 50px;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mi perfil</p>
       <%end%>
     </div>
-      <%if @es_usuario%>
-        <%if @presenta_trabajo%>
-          <%if @tiene_trabajo%>
-            <div class="col-xs-12" id="inside-md">
-              <%=link_to  presentation_path(current_user.presentation_id) do%>
-                <p style="margin-top: 25px;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Trabajo de Investigación</p>
-              <%end%>
-            </div>
-          <%else%>
-            <div class="col-xs-12" id="inside-md">
-              <%=link_to  new_presentation_path() do%>
-                <p style="margin-top: 25px;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Trabajo de Investigación</p>
-              <%end%>
-            </div>
-          <%end%>
-        <%end%>
-        <%if @prensenta_poster%>
-            <%if @tiene_poster%>
-              <div class="col-xs-12" id="inside-md">
-                <%=link_to poster_path(Poster.where('id = ?',current_user.poster_id).first.id) do%>
-                  <p style="margin-top: 25px;"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Mi póster</p>
+    <%if @es_usuario%>
+      <%if @presenta_trabajo%>
+        <%if @tiene_trabajo%>
+          <div class="col-xs-12" id="inside-md">
+            <%=link_to  presentation_path(current_user.presentation_id) do%>
+              <p style="margin-top: 25px;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Mi trabajo de investigación
+                <%if @tiene_correcciones%>
+                  <spam style="color:red;font-size:14px;">(Tiene correcciones!)</spam>
                 <%end%>
-              </div>
-            <%else%>
-              <div class="col-xs-12" id="inside-md">
-                <%=link_to new_poster_path do%>
-                  <p style="margin-top: 25px;"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Iniciar póster</p>
-                <%end%>
-              </div>
+              </p>
             <%end%>
-          <%end%>
+          </div>
+        <%else%>
+          <div class="col-xs-12" id="inside-md">
+            <%=link_to  new_presentation_path() do%>
+              <p style="margin-top: 25px;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Cargar trabajo de investigación</p>
+            <%end%>
+          </div>
+        <%end%>
+      <%end%>
+      <%if @prensenta_poster%>
+        <%if @tiene_poster%>
+          <div class="col-xs-12" id="inside-md">
+            <%=link_to poster_path(Poster.where('id = ?',current_user.poster_id).first.id) do%>
+              <p style="margin-top: 25px;"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Mi póster</p>
+            <%end%>
+          </div>
+        <%else%>
+          <div class="col-xs-12" id="inside-md">
+            <%=link_to new_poster_path do%>
+              <p style="margin-top: 25px;"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Iniciar póster</p>
+            <%end%>
+          </div>
+        <%end%>
+      <%end%>
       <%end%>
       <!-- <div class="col-xs-12" id="inside-md">
         <%=link_to others_proximamente_path do%>
@@ -46,28 +49,28 @@
         <%end%>
       </div> -->
       <%if @es_administrador or @es_organizador%>
-      <div class="col-xs-12" id="inside-md">
-        <%=link_to notifications_path do%>
-          <p style="margin-top: 25px;"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Notificaciones de Trabajos (<%=@cantidad_notificaciones_sin_ver%>)</p>
-        <%end%>
-      </div>
-        <div class="col-xs-12" id="inside-md">
-          <%=link_to presentations_path do%>
-            <p style="margin-top: 25px;"><span class="glyphicon glyphicon-list-alt"></span> Listado de Trabajos de Investigación</p>
-          <%end%>
-        </div>
-        <div class="col-xs-12" id="inside-md">
-          <%=link_to users_path do%>
-            <p style="margin-top: 25px;"><span class="glyphicon glyphicon-list-alt"></span> Listado de Inscriptos</p>
-          <%end%>
-        </div>
-        <%if @es_administrador%>
           <div class="col-xs-12" id="inside-md">
-            <%=link_to others_proximamente_path do%>
-              <p style="margin-top: 25px;"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> ABM</p>
+            <%=link_to notifications_path do%>
+              <p style="margin-top: 25px;"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Notificaciones de Trabajos (<%=@cantidad_notificaciones_sin_ver%>)</p>
             <%end%>
           </div>
-        <%end%>
+          <div class="col-xs-12" id="inside-md">
+            <%=link_to presentations_path do%>
+              <p style="margin-top: 25px;"><span class="glyphicon glyphicon-list-alt"></span> Listado de Trabajos de Investigación</p>
+            <%end%>
+          </div>
+          <div class="col-xs-12" id="inside-md">
+            <%=link_to users_path do%>
+              <p style="margin-top: 25px;"><span class="glyphicon glyphicon-list-alt"></span> Listado de Inscriptos</p>
+            <%end%>
+          </div>
+          <%if @es_administrador%>
+            <div class="col-xs-12" id="inside-md">
+              <%=link_to others_proximamente_path do%>
+                <p style="margin-top: 25px;"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> ABM</p>
+              <%end%>
+            </div>
+          <%end%>
       <%end%>
       <div class="col-xs-12" id="inside-md">
         <%=link_to 'http://concyt.cic.gba.gob.ar' do%>
@@ -76,13 +79,13 @@
       </div>
   <!--Usuario que no inició sesión-->
   <%else%>
-  <div class="row">
-    <div class="col-xs-12" id="inside-md">
-      <%=link_to 'http://concyt.cic.gba.gob.ar' do%>
-        <p style="margin-top: 25px;"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Novedades</p>
-      <%end%>
+    <div class="row">
+      <div class="col-xs-12" id="inside-md">
+        <%=link_to 'http://concyt.cic.gba.gob.ar' do%>
+          <p style="margin-top: 25px;"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Novedades</p>
+        <%end%>
+      </div>
     </div>
-  </div>
   <%end%>
   <!--End Usuario que inició sesión-->
 </div>

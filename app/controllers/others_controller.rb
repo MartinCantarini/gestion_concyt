@@ -8,23 +8,26 @@ class OthersController < ApplicationController
     @es_organizador=false;
     @es_administrador=false;
     @cantidad_notificaciones_sin_ver=Notification.getCantSinLeeer();
+
     if user_signed_in?
       if current_user.rol== 1
         @es_usuario=true;
         if current_user.tipo_participacion==1
           @presenta_trabajo=true;
-        if !current_user.presentation_id.blank?
-    			@tiene_trabajo=true;
-          if(Presentation.find(current_user.presentation_id).state_id==2 or Presentation.find(current_user.presentation_id).state_id==3)
-            @prensenta_poster=true;
+          if !current_user.presentation_id.blank?
+      			@tiene_trabajo=true;
+            @tiene_correcciones=Notification.getTiene(current_user.presentation_id);
+            if(Presentation.find(current_user.presentation_id).state_id==2 or Presentation.find(current_user.presentation_id).state_id==3)
+              @prensenta_poster=true;
+              if !current_user.poster_id.blank?
+                @tiene_poster=true;
+              end
+            end
           end
         end
-        end
-      end
-      if current_user.rol==2
+      elsif current_user.rol==2
         @es_organizador=true;
-      end
-      if current_user.rol== 3
+      elsif current_user.rol== 3
         @es_administrador=true;
       end
     end

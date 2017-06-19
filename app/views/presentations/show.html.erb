@@ -76,10 +76,10 @@
   </div>
   <div class="col-md-12 col-xs-12">
     <%if !@notificaciones.blank?%>
-      <table class="table table-hover">
+      <table class="table">
       <tr>
-        <th>Cuerpo</th>
-        <th>Fecha</th>
+        <th id="th-columnas">Cuerpo</th>
+        <th id="th-columnas">Fecha</th>
       </tr>
       <%@notificaciones.each do |notificacion|%>
       <tr>

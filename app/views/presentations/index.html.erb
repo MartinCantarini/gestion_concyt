@@ -3,6 +3,11 @@
   <hr />
   <div class="row">
   <div class="col-md-3">
+    <p>Cantidad Total: <%=@cantidad_presentaciones%></p>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-3">
     <p>Cantidad en Evaluación: <%=@cantidad_presentaciones_evaluacion%></p>
   </div>
   <div class="col-md-3">
@@ -23,6 +28,7 @@
     			<th id="th-columnas">Trabajo</th>
     			<th id="th-columnas">Resumen</th>
     			<th id="th-columnas">Sesión de Trabajo</th>
+          <th id="th-columnas">Estado</th>
     		</tr>
     		<%@presentaciones.each do |p|%>
     		<tr>
@@ -42,6 +48,7 @@
             <%end%>
           </td>
           <td><%=Session.getSession(p.session_id)%></td>
+          <td><%=State.getStateNombre(p.state_id)%></td>
     		</tr>
     		<%end%>
   	</table>
