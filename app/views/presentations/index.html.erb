@@ -32,7 +32,7 @@
     		</tr>
     		<%@presentaciones.each do |p|%>
     		<tr>
-    			<td><%=link_to p.titulo, presentation_path(p.id)%></td>
+    			<td><%=link_to p.titulo, presentation_path(p.id),data: { turbolinks: false } %></td>
     			<td>
             <%if p.trabajo.present?%>
               <%=link_to 'ver',p.trabajo.url%>
@@ -48,7 +48,15 @@
             <%end%>
           </td>
           <td><%=Session.getSession(p.session_id)%></td>
-          <td><%=State.getStateNombre(p.state_id)%></td>
+          <%if p.state_id==1%>
+            <td id="td-evaluacion"><%=State.getStateNombre(p.state_id)%></td>
+          <%elsif p.state_id==2%>
+            <td id="td-aprobado"><%=State.getStateNombre(p.state_id)%></td>
+          <%elsif p.state_id==3%>
+            <td id="td-seleccionado"><%=State.getStateNombre(p.state_id)%></td>
+          <%else p.state_id==4%>
+            <td id="td-desaprobado"><%=State.getStateNombre(p.state_id)%></td>
+          <%end%>
     		</tr>
     		<%end%>
   	</table>

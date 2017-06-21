@@ -27,6 +27,7 @@
       <%if @puede_modificar%>
         <%=link_to 'Modificar', edit_presentation_path(@presentacion.id)%>
       <%end%>
+      <p>Fecha de última modificación: <%=@presentacion.updated_at.strftime("%d/%m/%Y")%></p>
     </div>
   </div>
 </div>

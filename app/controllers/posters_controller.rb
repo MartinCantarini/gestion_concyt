@@ -182,14 +182,14 @@ class PostersController < ApplicationController
         autor = Magick::Draw.new
         autor.annotate(img, 0, 0, 1017, 530, autor_contenido_wrap) do
          self.font = 'Helvetica'
-         self.pointsize = 35
+         self.pointsize = 30
          self.fill = 'black'
         end
         if !coautor1.blank?
           coautor1 = Magick::Draw.new
           coautor1.annotate(img, 0, 0, 1017, 570, coautor1_contenido_wrap) do
            self.font = 'Helvetica'
-           self.pointsize = 35
+           self.pointsize = 30
            self.fill = 'black'
           end
         end
@@ -197,7 +197,7 @@ class PostersController < ApplicationController
           coautor2 = Magick::Draw.new
           coautor2.annotate(img, 0, 0, 1017, 610, coautor2_contenido_wrap) do
            self.font = 'Helvetica'
-           self.pointsize = 35
+           self.pointsize = 30
            self.fill = 'black'
           end
         end
@@ -205,7 +205,7 @@ class PostersController < ApplicationController
           coautor3 = Magick::Draw.new
           coautor3.annotate(img, 0, 0, 1017, 650, coautor3_contenido_wrap) do
            self.font = 'Helvetica'
-           self.pointsize = 35
+           self.pointsize = 30
            self.fill = 'black'
           end
         end
@@ -213,7 +213,7 @@ class PostersController < ApplicationController
           coautor4 = Magick::Draw.new
           coautor4.annotate(img, 0, 0, 1017, 690, coautor4_contenido_wrap) do
            self.font = 'Helvetica'
-           self.pointsize = 35
+           self.pointsize = 30
            self.fill = 'black'
           end
         end
@@ -221,7 +221,7 @@ class PostersController < ApplicationController
           coautor5 = Magick::Draw.new
           coautor5.annotate(img, 0, 0, 1017, 730, coautor5_contenido_wrap) do
            self.font = 'Helvetica'
-           self.pointsize = 35
+           self.pointsize = 30
            self.fill = 'black'
           end
         end
@@ -234,7 +234,7 @@ class PostersController < ApplicationController
         institucion = Magick::Draw.new
         institucion.annotate(img, 0, 0, 1017, 825, institucion_contenido_wrap) do
          self.font = 'Helvetica'
-         self.pointsize = 35
+         self.pointsize = 30
          self.fill = 'black'
         end
         introduccion = Magick::Draw.new
@@ -256,13 +256,13 @@ class PostersController < ApplicationController
          self.fill = 'black'
         end
         resultados = Magick::Draw.new
-        resultados.annotate(img, 0, 0, 1000, 1780, resultados_contenido_wrap) do
+        resultados.annotate(img, 0, 0, 1000, 1762, resultados_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 40
          self.fill = 'black'
         end
         conclusion = Magick::Draw.new
-        conclusion.annotate(img, 0, 0, 1000, 2350,  conclusiones_contenido_wrap) do
+        conclusion.annotate(img, 0, 0, 1000, 2348,  conclusiones_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 40
          self.fill = 'black'
@@ -416,19 +416,19 @@ class PostersController < ApplicationController
          self.fill = 'black'
         end
         metodologia = Magick::Draw.new
-        metodologia.annotate(img, 0, 0, 88, 1610, metodologia_contenido_wrap) do
+        metodologia.annotate(img, 0, 0, 88, 1600, metodologia_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 40
          self.fill = 'black'
         end
         resultados = Magick::Draw.new
-        resultados.annotate(img, 0, 0, 1000, 900, resultados_contenido_wrap) do
+        resultados.annotate(img, 0, 0, 1000, 882, resultados_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 40
          self.fill = 'black'
         end
         conclusion = Magick::Draw.new
-        conclusion.annotate(img, 0, 0, 1000, 1500, conclusiones_contenido_wrap) do
+        conclusion.annotate(img, 0, 0, 1000, 1498, conclusiones_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 40
          self.fill = 'black'

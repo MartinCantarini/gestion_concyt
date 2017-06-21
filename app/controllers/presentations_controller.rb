@@ -12,7 +12,7 @@ class PresentationsController < ApplicationController
         if current_user.rol==2 or current_user.rol==3
           @puede_enviar_correccion=true;
         end
-        if current_user.presentation_id==Presentation.find(params[:id]).id
+        if (current_user.presentation_id==Presentation.find(params[:id]).id and Presentation.find(params[:id]).state_id == 1)
           @puede_modificar=true;
         end
       else

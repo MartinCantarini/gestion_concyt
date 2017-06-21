@@ -132,3 +132,15 @@ font-size: 55px;
 	background-color: #088A85;
 	color:#FFFFFF;
 }
+#td-evaluacion{
+	background-color: #FCF8E3;
+}
+#td-aprobado{
+	background-color: #DFF0D8;
+}
+#td-seleccionado{
+	background-color: #D9EDF7;
+}
+#td-desaprobado{
+	background-color: #F2DEDE;
+}
