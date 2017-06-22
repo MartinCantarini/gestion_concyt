@@ -27,7 +27,17 @@ class PresentationsController < ApplicationController
 
   def index
     if current_user.rol==2 or current_user.rol==3
-      @presentaciones=Presentation.all
+      if params[:s]=='1'
+        @presentaciones=Presentation.where("state_id = ?",1)
+      elsif params[:s]=='2'
+        @presentaciones=Presentation.where("state_id = ?",2)
+      elsif params[:s]=='3'
+        @presentaciones=Presentation.where("state_id = ?",3)
+      elsif params[:s]=='4'
+        @presentaciones=Presentation.where("state_id = ?",4)
+      else
+        @presentaciones=Presentation.all
+      end
       @cantidad_presentaciones=Presentation.all.count
       @cantidad_presentaciones_evaluacion=Presentation.where("state_id = ?",1).count
       @cantidad_presentaciones_aprobados=Presentation.where("state_id = ?",2).count
@@ -107,6 +117,6 @@ class PresentationsController < ApplicationController
   end
 
   def params_presentation
-    params.require(:presentation).permit(:titulo,:session_id,:resumen,:trabajo,:estado)
+    params.require(:presentation).permit(:titulo,:session_id,:resumen,:trabajo,:estado,:exposition_id)
   end
 end

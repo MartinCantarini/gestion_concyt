@@ -10,6 +10,12 @@
     <spam id="campo-obligatorio">* </spam><%= p.label "Titulo" %><br>
     <%= p.text_field :titulo ,class: "form-control",required:true%>
   </p>
+  <p>
+    <spam id="campo-obligatorio">* </spam><%= p.label "Tipo de exposición" %><br>
+    <%= p.select :exposition_id,
+    options_from_collection_for_select(Exposition.all, "id", "nombre", p.object.exposition_id),{
+    prompt: "Seleccionar el tipo de exposición"},{class: "form-control", required:true} %>
+  </p>
   </div>
   <div class="col-md-6 col-xs-12">
   <p>

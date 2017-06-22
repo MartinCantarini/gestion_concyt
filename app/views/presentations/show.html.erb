@@ -6,6 +6,7 @@
       <p>Título: <%=@presentacion.titulo%></p>
       <p>Sesión de Trabajo: <%=Session.getSession(@presentacion.session_id)%></p>
       <p>Estado de la presentación: <%=State.getStateNombre(@presentacion.state_id)%></p>
+      <p>Tipo de exposición: <%=Exposition.getNombre(@presentacion.exposition_id)%></p>
     </div>
     <div class="col-md-6 col-xs-12">
     <h4>Trabajo</h4>

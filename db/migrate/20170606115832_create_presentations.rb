@@ -5,6 +5,7 @@ class CreatePresentations < ActiveRecord::Migration[5.0]
       t.string :estado
       t.references :session, foreign_key: true
       t.references :state, foreign_key: true, default:1
+      t.references :exposition, foreign_key: true
       t.timestamps
     end
   end

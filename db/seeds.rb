@@ -44,4 +44,7 @@ Session.create(nombre: 'Energías para el desarrollo sostenible');
 Session.create(nombre: 'Medioambiente y riesgo salud');
 Session.create(nombre: 'Diseños institucionales para integrar conocimiento en las políticas públicas');
 
+#TIPO DE EXPOSICION
+Exposition.create(nombre: 'Exponer de manera oral mi trabajo');
+Exposition.create(nombre: 'Exponer de manera oral mi póster');
 #USUARIOS DE PRUEBA

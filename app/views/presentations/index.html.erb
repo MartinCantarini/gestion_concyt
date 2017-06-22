@@ -2,52 +2,63 @@
   <h3>Presentaciones de Trabajo</h3><br>
   <hr />
   <div class="row">
-  <div class="col-md-3">
-    <p>Cantidad Total: <%=@cantidad_presentaciones%></p>
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+      <p>Cantidad Total: <%=@cantidad_presentaciones%></p>
+      <%=link_to 'Ver todos los trabajos',presentations_path()%>
+    </div>
+  <div class="col-md-2">
+    <p>Cantidad en Evaluación: <%=@cantidad_presentaciones_evaluacion%></p>
+    <p><%=link_to 'Ver trabajos en evaluación',presentations_path(:s=>1)%></p>
   </div>
+  <div class="col-md-2">
+    <p>Cantidad Aprobados: <%=@cantidad_presentaciones_aprobados%></p>
+    <p><%=link_to 'Ver trabajos aprobados',presentations_path(:s=>2)%></p>
+  </div>
+  <div class="col-md-2">
+    <p>Cantidad Desaprobados: <%=@cantidad_presentaciones_desaprobados%></p>
+    <p><%=link_to 'Ver trabajos desaprobados',presentations_path(:s=>4)%></p>
+  </div>
+  <div class="col-md-2">
+    <p>Cantidad Seleccionados: <%=@cantidad_presentaciones_seleccionados%></p>
+    <p><%=link_to 'Ver trabajos seleccionados',presentations_path(:s=>3)%></p>
+  </div>
+  <div class="col-md-1"></div>
   </div>
   <div class="row">
+    <div class="col-md-12"><hr /></div>
+  </div>
+  <div class="row">
+  <div class="col-md-1"></div>
   <div class="col-md-3">
-    <p>Cantidad en Evaluación: <%=@cantidad_presentaciones_evaluacion%></p>
+    <p style="color:#C63D0F;">DST = Desarrollo socio-territorial y la planificación urbano-regional frente a los retos hídricos</p>
+  </div>
+  <div class="col-md-2">
+    <p style="color:#B42432;">EDS = Energías para el desarrollo sostenible</p>
+  </div>
+  <div class="col-md-2">
+    <p style="color:#339933">MRS = Medioambiente y riesgo salud</p>
   </div>
   <div class="col-md-3">
-    <p>Cantidad Aprobados: <%=@cantidad_presentaciones_aprobados%></p>
+    <p style="color:#7D1935">DIC = Diseños institucionales para integrar conocimiento en las políticas públicas</p>
   </div>
-  <div class="col-md-3">
-    <p>Cantidad Desaprobados: <%=@cantidad_presentaciones_desaprobados%></p>
-  </div>
-  <div class="col-md-3">
-    <p>Cantidad Seleccionados: <%=@cantidad_presentaciones_seleccionados%></p>
-  </div>
+
+  <div class="col-md-1"></div>
   </div>
   <div class="row">
     <div class="col-md-12">
     	<table class="table table-bordered">
     		<tr>
           <th id="th-columnas">Título</th>
-    			<th id="th-columnas">Trabajo</th>
-    			<th id="th-columnas">Resumen</th>
     			<th id="th-columnas">Sesión de Trabajo</th>
           <th id="th-columnas">Estado</th>
+          <th id="th-columnas">Última corrección</th>
+          <th id="th-columnas">Última modificación</th>
     		</tr>
     		<%@presentaciones.each do |p|%>
     		<tr>
     			<td><%=link_to p.titulo, presentation_path(p.id),data: { turbolinks: false } %></td>
-    			<td>
-            <%if p.trabajo.present?%>
-              <%=link_to 'ver',p.trabajo.url%>
-            <%else%>
-              <p style="color:red;font-size:11px;">(Aún no fue cargado)</p>
-            <%end%>
-          </td>
-    			<td>
-            <%if p.resumen.present?%>
-              <%=link_to 'ver',p.resumen.url%>
-            <%else%>
-              <p style="color:red;font-size:11px;">(Aún no fue cargado)</p>
-            <%end%>
-          </td>
-          <td><%=Session.getSession(p.session_id)%></td>
+          <td><%=Session.getSessionAlias(p.session_id)%></td>
           <%if p.state_id==1%>
             <td id="td-evaluacion"><%=State.getStateNombre(p.state_id)%></td>
           <%elsif p.state_id==2%>
@@ -57,6 +68,14 @@
           <%else p.state_id==4%>
             <td id="td-desaprobado"><%=State.getStateNombre(p.state_id)%></td>
           <%end%>
+
+          <td>
+            <%if Notification.getDateUltimaCorreccion(p.id)!='No disponible'%>
+              <%=Notification.getDateUltimaCorreccion(p.id).strftime("%d/%m/%Y - %R")%></td>
+            <%else%>
+              <%=Notification.getDateUltimaCorreccion(p.id)%>
+            <%end%>
+          <td><%=(p.updated_at - 3.hours).strftime("%d/%m/%Y - %R")%></td>
     		</tr>
     		<%end%>
   	</table>

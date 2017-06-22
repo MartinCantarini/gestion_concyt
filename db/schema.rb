@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20170606144519) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "expositions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "formats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
@@ -39,11 +45,11 @@ ActiveRecord::Schema.define(version: 20170606144519) do
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "leido",                            default: 0
     t.text     "cuerpo",             limit: 65535
-    t.boolean  "para_administrador"
+    t.boolean  "para_administrador",               default: false
     t.integer  "presentation_id"
     t.integer  "session_id"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.index ["presentation_id"], name: "index_notifications_on_presentation_id", using: :btree
     t.index ["session_id"], name: "index_notifications_on_session_id", using: :btree
   end
@@ -99,6 +105,7 @@ ActiveRecord::Schema.define(version: 20170606144519) do
     t.string   "estado"
     t.integer  "session_id"
     t.integer  "state_id",             default: 1
+    t.integer  "exposition_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "resumen_file_name"
@@ -109,6 +116,7 @@ ActiveRecord::Schema.define(version: 20170606144519) do
     t.string   "trabajo_content_type"
     t.integer  "trabajo_file_size"
     t.datetime "trabajo_updated_at"
+    t.index ["exposition_id"], name: "index_presentations_on_exposition_id", using: :btree
     t.index ["session_id"], name: "index_presentations_on_session_id", using: :btree
     t.index ["state_id"], name: "index_presentations_on_state_id", using: :btree
   end
@@ -152,6 +160,7 @@ ActiveRecord::Schema.define(version: 20170606144519) do
     t.integer  "tipo_institucion"
     t.string   "institucion"
     t.integer  "rol",                    default: 1
+    t.integer  "acreditado",             default: 0
     t.integer  "poster_id"
     t.integer  "presentation_id"
     t.index ["authors_id"], name: "index_users_on_authors_id", using: :btree
@@ -164,6 +173,7 @@ ActiveRecord::Schema.define(version: 20170606144519) do
   add_foreign_key "notifications", "presentations"
   add_foreign_key "notifications", "sessions"
   add_foreign_key "posters", "sessions"
+  add_foreign_key "presentations", "expositions"
   add_foreign_key "presentations", "sessions"
   add_foreign_key "presentations", "states"
 end

@@ -11,4 +11,11 @@ class Notification < ApplicationRecord
       return false
     end
   end
+  def self.getDateUltimaCorreccion(id_presentacion)
+    if Notification.where('para_administrador = 0 AND presentation_id = ?',id_presentacion).count > 0
+      Notification.where('para_administrador = 0 AND presentation_id = ?',id_presentacion).last.created_at - 3.hours
+    else
+      'No disponible'
+    end  
+  end
 end

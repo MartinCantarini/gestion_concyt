@@ -174,67 +174,68 @@ class PostersController < ApplicationController
          self.gravity = Magick::CenterGravity
         end
         autores_titulo = Magick::Draw.new
-        autores_titulo.annotate(img, 0, 0, 1017, 495, autores_titulo_contenido_wrap) do
-         self.font = 'Helvetica'
-         self.pointsize = 40
-         self.fill = 'black'
-        end
-        autor = Magick::Draw.new
-        autor.annotate(img, 0, 0, 1017, 530, autor_contenido_wrap) do
+        autores_titulo.annotate(img, 0, 0, 1017, 550, autores_titulo_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 30
+         self.fill = '#1d4549'
+        end
+        autor = Magick::Draw.new
+        autor.annotate(img, 0, 0, 1017, 585, autor_contenido_wrap) do
+         self.font = 'Helvetica'
+         self.pointsize = 25
          self.fill = 'black'
         end
         if !coautor1.blank?
           coautor1 = Magick::Draw.new
-          coautor1.annotate(img, 0, 0, 1017, 570, coautor1_contenido_wrap) do
+          coautor1.annotate(img, 0, 0, 1017, 615, coautor1_contenido_wrap) do
            self.font = 'Helvetica'
-           self.pointsize = 30
+           self.pointsize = 25
            self.fill = 'black'
           end
         end
         if !coautor2.blank?
           coautor2 = Magick::Draw.new
-          coautor2.annotate(img, 0, 0, 1017, 610, coautor2_contenido_wrap) do
+          coautor2.annotate(img, 0, 0, 1017, 645, coautor2_contenido_wrap) do
            self.font = 'Helvetica'
-           self.pointsize = 30
+           self.pointsize = 25
            self.fill = 'black'
           end
         end
         if !coautor3.blank?
           coautor3 = Magick::Draw.new
-          coautor3.annotate(img, 0, 0, 1017, 650, coautor3_contenido_wrap) do
+          coautor3.annotate(img, 0, 0, 1017, 675, coautor3_contenido_wrap) do
            self.font = 'Helvetica'
-           self.pointsize = 30
+           self.pointsize = 25
            self.fill = 'black'
           end
         end
         if !coautor4.blank?
           coautor4 = Magick::Draw.new
-          coautor4.annotate(img, 0, 0, 1017, 690, coautor4_contenido_wrap) do
+          coautor4.annotate(img, 0, 0, 1017, 705, coautor4_contenido_wrap) do
            self.font = 'Helvetica'
-           self.pointsize = 30
+           self.pointsize = 25
            self.fill = 'black'
           end
         end
         if !coautor5.blank?
           coautor5 = Magick::Draw.new
-          coautor5.annotate(img, 0, 0, 1017, 730, coautor5_contenido_wrap) do
+          coautor5.annotate(img, 0, 0, 1017, 735, coautor5_contenido_wrap) do
            self.font = 'Helvetica'
-           self.pointsize = 30
+           self.pointsize = 25
            self.fill = 'black'
           end
         end
         institucion_titulo = Magick::Draw.new
-        institucion_titulo.annotate(img, 0, 0, 1017, 785, institucion_titulo_contenido_wrap) do
-         self.font = 'Helvetica'
-         self.pointsize = 40
-         self.fill = 'black'
-        end
-        institucion = Magick::Draw.new
-        institucion.annotate(img, 0, 0, 1017, 825, institucion_contenido_wrap) do
+        institucion_titulo.annotate(img, 0, 0, 1317, 550, institucion_titulo_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 30
+         self.fill = '#1d4549'
+         self.font_weight = Magick::BoldWeight
+        end
+        institucion = Magick::Draw.new
+        institucion.annotate(img, 0, 0, 1317, 585, institucion_contenido_wrap) do
+         self.font = 'Helvetica'
+         self.pointsize = 25
          self.fill = 'black'
         end
         introduccion = Magick::Draw.new
@@ -339,21 +340,21 @@ class PostersController < ApplicationController
          self.gravity = Magick::CenterGravity
         end
         autores_titulo = Magick::Draw.new
-        autores_titulo.annotate(img, 0, 0, 1017, 495, autores_titulo_contenido_wrap) do
+        autores_titulo.annotate(img, 0, 0, 1017, 550, autores_titulo_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 30
-         self.fill = 'black'
+         self.fill = '#1d4549'
          self.stroke_width = 4
         end
         autor = Magick::Draw.new
-        autor.annotate(img, 0, 0, 1017, 525, autor_contenido_wrap) do
+        autor.annotate(img, 0, 0, 1017, 585, autor_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 25
          self.fill = 'black'
         end
         if !coautor1.blank?
           coautor1 = Magick::Draw.new
-          coautor1.annotate(img, 0, 0, 1017, 555, coautor1_contenido_wrap) do
+          coautor1.annotate(img, 0, 0, 1017, 615, coautor1_contenido_wrap) do
            self.font = 'Helvetica'
            self.pointsize = 25
            self.fill = 'black'
@@ -361,7 +362,7 @@ class PostersController < ApplicationController
         end
         if !coautor2.blank?
           coautor2 = Magick::Draw.new
-          coautor2.annotate(img, 0, 0, 1017, 585, coautor2_contenido_wrap) do
+          coautor2.annotate(img, 0, 0, 1017, 645, coautor2_contenido_wrap) do
            self.font = 'Helvetica'
            self.pointsize = 25
            self.fill = 'black'
@@ -369,7 +370,7 @@ class PostersController < ApplicationController
         end
         if !coautor3.blank?
           coautor3 = Magick::Draw.new
-          coautor3.annotate(img, 0, 0, 1017, 615, coautor3_contenido_wrap) do
+          coautor3.annotate(img, 0, 0, 1017, 675, coautor3_contenido_wrap) do
            self.font = 'Helvetica'
            self.pointsize = 25
            self.fill = 'black'
@@ -377,7 +378,7 @@ class PostersController < ApplicationController
         end
         if !coautor4.blank?
           coautor4 = Magick::Draw.new
-          coautor4.annotate(img, 0, 0, 1017, 645, coautor4_contenido_wrap) do
+          coautor4.annotate(img, 0, 0, 1017, 705, coautor4_contenido_wrap) do
            self.font = 'Helvetica'
            self.pointsize = 25
            self.fill = 'black'
@@ -385,20 +386,21 @@ class PostersController < ApplicationController
         end
         if !coautor5.blank?
           coautor5 = Magick::Draw.new
-          coautor5.annotate(img, 0, 0, 1017, 675, coautor5_contenido_wrap) do
+          coautor5.annotate(img, 0, 0, 1017, 735, coautor5_contenido_wrap) do
            self.font = 'Helvetica'
            self.pointsize = 25
            self.fill = 'black'
           end
         end
         institucion_titulo = Magick::Draw.new
-        institucion_titulo.annotate(img, 0, 0, 1017, 710, institucion_titulo_contenido_wrap) do
+        institucion_titulo.annotate(img, 0, 0, 1317, 550, institucion_titulo_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 30
-         self.fill = 'black'
+         self.fill = '#1d4549'
+         self.font_weight = Magick::BoldWeight
         end
         institucion = Magick::Draw.new
-        institucion.annotate(img, 0, 0, 1017, 740, institucion_contenido_wrap) do
+        institucion.annotate(img, 0, 0, 1317, 585, institucion_contenido_wrap) do
          self.font = 'Helvetica'
          self.pointsize = 25
          self.fill = 'black'
@@ -437,7 +439,7 @@ class PostersController < ApplicationController
         codigo.annotate(img, 0, 0, 127, 2950,  code.to_s) do
          self.font = 'Helvetica'
          self.pointsize = 70
-         self.fill = 'black'
+         self.fill = '#1d4549'
         end
         img1 = Magick::Image.read('public/images/poster/'+@poster.id.to_s+'/large/imagen2.png').first
         logo = Magick::Image.read('public/images/poster/'+@poster.id.to_s+'/large/logo.png').first
