@@ -18,13 +18,16 @@ ActiveRecord::Schema.define(version: 20170606144519) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "centers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "siglas"
+    t.string   "director"
+    t.integer  "inscripto",  default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  create_table "expositions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,9 +106,9 @@ ActiveRecord::Schema.define(version: 20170606144519) do
   create_table "presentations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "titulo"
     t.string   "estado"
+    t.integer  "user_id",              default: 1
     t.integer  "session_id"
-    t.integer  "state_id",             default: 1
-    t.integer  "exposition_id"
+    t.integer  "state_id",             default: 5
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "resumen_file_name"
@@ -116,9 +119,9 @@ ActiveRecord::Schema.define(version: 20170606144519) do
     t.string   "trabajo_content_type"
     t.integer  "trabajo_file_size"
     t.datetime "trabajo_updated_at"
-    t.index ["exposition_id"], name: "index_presentations_on_exposition_id", using: :btree
     t.index ["session_id"], name: "index_presentations_on_session_id", using: :btree
     t.index ["state_id"], name: "index_presentations_on_state_id", using: :btree
+    t.index ["user_id"], name: "index_presentations_on_user_id", using: :btree
   end
 
   create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -157,6 +160,7 @@ ActiveRecord::Schema.define(version: 20170606144519) do
     t.string   "telefono"
     t.integer  "tipo_participacion"
     t.integer  "authors_id"
+    t.integer  "centers_id"
     t.integer  "tipo_institucion"
     t.string   "institucion"
     t.integer  "rol",                    default: 1
@@ -164,6 +168,7 @@ ActiveRecord::Schema.define(version: 20170606144519) do
     t.integer  "poster_id"
     t.integer  "presentation_id"
     t.index ["authors_id"], name: "index_users_on_authors_id", using: :btree
+    t.index ["centers_id"], name: "index_users_on_centers_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["poster_id"], name: "index_users_on_poster_id", using: :btree
     t.index ["presentation_id"], name: "index_users_on_presentation_id", using: :btree
@@ -173,7 +178,7 @@ ActiveRecord::Schema.define(version: 20170606144519) do
   add_foreign_key "notifications", "presentations"
   add_foreign_key "notifications", "sessions"
   add_foreign_key "posters", "sessions"
-  add_foreign_key "presentations", "expositions"
   add_foreign_key "presentations", "sessions"
   add_foreign_key "presentations", "states"
+  add_foreign_key "presentations", "users"
 end

@@ -7,6 +7,7 @@ class Addfieldstousers < ActiveRecord::Migration[5.0]
     add_column :users, :telefono, :string
     add_column :users, :tipo_participacion, :integer
     add_reference :users, :authors, index: true
+    add_reference :users, :centers, index: true
     add_column :users, :tipo_institucion, :integer
     add_column :users, :institucion, :string
     add_column :users, :rol, :integer, default: 1

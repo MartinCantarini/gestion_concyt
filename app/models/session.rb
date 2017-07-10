@@ -9,8 +9,10 @@ class Session < ApplicationRecord
       return 'EDS'
     elsif  Session.find(id_eje).id==3
       return 'MRS'
-    else
+    elsif  Session.find(id_eje).id==4
       return 'DIC'
+    else
+      return 'OTRA'
     end
   end
 end

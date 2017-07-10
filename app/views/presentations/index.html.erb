@@ -29,7 +29,6 @@
     <div class="col-md-12"><hr /></div>
   </div>
   <div class="row">
-  <div class="col-md-1"></div>
   <div class="col-md-3">
     <p style="color:#C63D0F;">DST = Desarrollo socio-territorial y la planificación urbano-regional frente a los retos hídricos</p>
   </div>
@@ -37,26 +36,30 @@
     <p style="color:#B42432;">EDS = Energías para el desarrollo sostenible</p>
   </div>
   <div class="col-md-2">
-    <p style="color:#339933">MRS = Medioambiente y riesgo salud</p>
+    <p style="color:#339933;">MRS = Medioambiente y riesgo salud</p>
   </div>
   <div class="col-md-3">
-    <p style="color:#7D1935">DIC = Diseños institucionales para integrar conocimiento en las políticas públicas</p>
+    <p style="color:#7D1935;">DIC = Diseños institucionales para integrar conocimiento en las políticas públicas</p>
   </div>
-
-  <div class="col-md-1"></div>
+  <div class="col-md-2">
+    <p style="color:violet;">OTRA = Otra</p>
+  </div>
   </div>
   <div class="row">
     <div class="col-md-12">
     	<table class="table table-bordered">
     		<tr>
+          <th id="th-columnas">ID</th>
           <th id="th-columnas">Título</th>
     			<th id="th-columnas">Sesión de Trabajo</th>
           <th id="th-columnas">Estado</th>
+          <th id="th-columnas">Representa al Centro</th>
           <th id="th-columnas">Última corrección</th>
           <th id="th-columnas">Última modificación</th>
     		</tr>
     		<%@presentaciones.each do |p|%>
     		<tr>
+          <td><%=p.id%></td>
     			<td><%=link_to p.titulo, presentation_path(p.id),data: { turbolinks: false } %></td>
           <td><%=Session.getSessionAlias(p.session_id)%></td>
           <%if p.state_id==1%>
@@ -65,10 +68,12 @@
             <td id="td-aprobado"><%=State.getStateNombre(p.state_id)%></td>
           <%elsif p.state_id==3%>
             <td id="td-seleccionado"><%=State.getStateNombre(p.state_id)%></td>
-          <%else p.state_id==4%>
+          <%elsif p.state_id==4%>
             <td id="td-desaprobado"><%=State.getStateNombre(p.state_id)%></td>
+          <%else%>
+            <td><%=State.getStateNombre(p.state_id)%></td>
           <%end%>
-
+          <td><%=User.esBecario(p.id)%></td>
           <td>
             <%if Notification.getDateUltimaCorreccion(p.id)!='No disponible'%>
               <%=Notification.getDateUltimaCorreccion(p.id).strftime("%d/%m/%Y - %R")%></td>

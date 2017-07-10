@@ -16,6 +16,7 @@
         <th id="th-columnas">Participación</th>
         <th id="th-columnas">Tipo Institución</th>
         <th id="th-columnas">Institución</th>
+        <th id="th-columnas">Rol</th>
   		</tr>
   		<%@usuarios.each do |u|%>
   		<tr>
@@ -23,8 +24,32 @@
   			<td><%=u.apellido%></td>
   			<td><%=u.email%></td>
         <td><%=Participation.getParticipacion(u.tipo_participacion)%></td>
-        <td><%=Institution.getInstitucion(u.tipo_institucion)%></td>
-        <td><%=u.institucion%></td>
+        <td>
+          <%if !u.institucion.blank?%>
+            <%=Institution.getInstitucion(u.tipo_institucion)%>
+          <%end%>
+          <%if u.tipo_participacion==2%>
+            <%=Center.getSiglas(u.centers_id)%>
+          <%end%>
+        </td>
+        <td>
+          <%if u.tipo_participacion==2%>
+            <%='Centro'%>
+          <%else%>
+            <%=u.institucion%>
+          <%end%>
+        </td>
+        <td>
+          <%if u.rol==4%>
+            <%='Admin'%>
+          <%elsif u.rol==3%>
+            <%='Eval'%>
+          <%elsif u.rol==2%>
+            <%='Eval F'%>
+          <%else%>
+            <%='Normal'%>
+          <%end%>
+        </td>
   		</tr>
   		<%end%>
 	</table>

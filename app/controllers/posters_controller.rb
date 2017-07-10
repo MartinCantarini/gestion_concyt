@@ -20,6 +20,9 @@ class PostersController < ApplicationController
 
   def new
     #redirect_to create_poster_path
+    @sesion_trabajo=Session.find(Presentation.find(current_user.presentation_id).session_id).nombre
+    @institucion=Center.getSiglas(current_user.centers_id)+' ('+Center.getNombre(current_user.centers_id)+')'
+    @titulo_trabajo=Presentation.find(current_user.presentation_id).titulo
     @poster=Poster.new
   end
 
@@ -57,6 +60,9 @@ class PostersController < ApplicationController
   end
 
   def edit
+    @sesion_trabajo=Session.find(Presentation.find(current_user.presentation_id).session_id).nombre
+    @institucion=Center.getSiglas(current_user.centers_id)+' ('+Center.getNombre(current_user.centers_id)+')'
+    @titulo_trabajo=Presentation.find(current_user.presentation_id).titulo
     @poster=Poster.find(params[:id])
   end
 
@@ -272,7 +278,7 @@ class PostersController < ApplicationController
         codigo.annotate(img, 0, 0, 127, 2950,  code.to_s) do
          self.font = 'Helvetica'
          self.pointsize = 70
-         self.fill = 'black'
+         self.fill = '#FFFFFF'
         end
         img1 = Magick::Image.read('public/images/poster/'+@poster.id.to_s+'/large/imagen1a.png').first
         img2 = Magick::Image.read('public/images/poster/'+@poster.id.to_s+'/large/imagen1b.png').first
@@ -439,7 +445,7 @@ class PostersController < ApplicationController
         codigo.annotate(img, 0, 0, 127, 2950,  code.to_s) do
          self.font = 'Helvetica'
          self.pointsize = 70
-         self.fill = '#1d4549'
+         self.fill = '#FFFFFF'
         end
         img1 = Magick::Image.read('public/images/poster/'+@poster.id.to_s+'/large/imagen2.png').first
         logo = Magick::Image.read('public/images/poster/'+@poster.id.to_s+'/large/logo.png').first

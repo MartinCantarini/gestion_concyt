@@ -7,13 +7,15 @@
     <table class="table table-hover">
     <tr>
 
-      <th>ID trabajo</th>
-      <th>Cuerpo</th>
-      <th>Sesión</th>
-      <th>Fecha</th>
-      <th></th>
+      <th id="th-columnas">ID trabajo</th>
+      <th id="th-columnas">Cuerpo</th>
+      <th id="th-columnas">Sesión</th>
+      <th id="th-columnas">Pertenece a Becario</th>
+      <th id="th-columnas">Fecha</th>
+      <th id="th-columnas"></th>
     </tr>
     <%@notificaciones_para_organizador.each do |notificacion|%>
+    <%if Presentation.find(notificacion.presentation_id).user_id==current_user.id%>
     <%if notificacion.leido==1%>
       <tr>
         <td><%=notificacion.presentation_id%></td>
@@ -28,6 +30,7 @@
         <%else%>
           <spam style="color:orange;"><%=Session.getSession(notificacion.session_id)%></spam>
         <%end%></td>
+        <td><%=User.esBecario(notificacion.presentation_id)%></td>
         <td><%=notificacion.created_at.strftime("%d/%m/%Y")%></td>
         <td><%=link_to 'ver',notification_path(notificacion.id)%></td>
       </tr>
@@ -46,9 +49,11 @@
         <%else%>
           <spam style="color:orange;"><%=Session.getSession(notificacion.session_id)%></spam>
         <%end%></td>
+        <td><%=User.esBecario(notificacion.presentation_id)%></td>
         <td><%=notificacion.created_at.strftime("%d/%m/%Y")%></td>
         <td><%=link_to 'ver',notification_path(notificacion.id)%></td>
       </tr>
+    <%end%>
     <%end%>
     <%end%>
     </table>

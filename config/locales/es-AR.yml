@@ -181,7 +181,7 @@ es-AR:
       updated_not_active: "Su password ha sido actualizado con éxito."
     registrations:
       destroyed: "Hasta Pronto! Su cuenta ha sido cancelada con éxito."
-      signed_up: "Bienvenido a GeUPC! Usted ha iniciado sesión con éxito."
+      signed_up: "Bienvenido! Usted ha iniciado sesión con éxito."
       signed_up_but_inactive: "Usted se ha registrado con éxito. Por favor confirme su cuenta a través del correo electrónico que le enviaremos en instantes"
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
       signed_up_but_unconfirmed: "Un mensaje con un link para confirmar su cuenta ha sido enviado a su Correo Electrónico. Por favor ingrese a ese link para activar su cuenta."

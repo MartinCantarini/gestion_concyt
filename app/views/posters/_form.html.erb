@@ -8,13 +8,15 @@
   </p>
   <p>
     <spam id="campo-obligatorio">* </spam><%= p.label :titulo %><spam id="campo-ayuda"> (máximo de 100 caracteres)</spam><br>
-    <%= p.text_field :titulo,:maxlength => 100, id:'input-responsive', class: 'form-control', required: true%>
+    <%= p.text_field :titulo,:maxlength => 100,:value=>@titulo_trabajo,:readonly => true,id:'input-responsive', class: 'form-control', required: true%>
   </p>
   <p>
     <spam id="campo-obligatorio">* </spam><%= p.label "Sesión de Trabajo" %><br>
-    <%= p.select :session_id,
-    options_from_collection_for_select(Session.all, "id", "nombre", p.object.session_id),{
-    prompt: "Seleccionar una Sesión de Trabajo"},{class: "form-control"} %>
+    <!-- <%= p.text_field :session_id,:maxlength => 100,:selected=>@sesion_trabajo, id:'input-responsive', class: 'form-control',required: true%> -->
+    <%= p.select :session_id,options_from_collection_for_select(Session.all, "id", "nombre"),{:selected => @sesion_trabajo},{class: 'form-control',:disabled=>true}%>
+    <!-- <%= p.select :session_id,
+    options_from_collection_for_select(Session.all, "id", "nombre",selected:@session_trabajo),{
+    prompt: "Seleccionar una Sesión de Trabajo"},{class: "form-control"}%> -->
   <p>
     <%= p.label :autor %><br>
     <%= p.text_field :autor,:maxlength => 40, id:'input-responsive', class: 'form-control'%>
@@ -40,8 +42,8 @@
     <%= p.text_field :coautor5,:maxlength => 40, id:'input-responsive', class: 'form-control'%>
   </p>
   <p>
-    <%= p.label 'Institución' %><br>
-    <%= p.text_field :institucion,:maxlength => 50, id:'input-responsive', class: 'form-control'%>
+    <%= p.label 'Institución a la que pertenece' %><br>
+    <%= p.text_field :institucion,:value=>@institucion,:readonly => true,:maxlength => 50, id:'input-responsive', class: 'form-control'%>
   </p>
   <p>
     <%= p.label :introduccion %><spam id="campo-ayuda"> (máximo de 400 caracteres)</spam><br>

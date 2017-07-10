@@ -20,18 +20,32 @@
   </div>
   <div class="col-md-5">
     <div id="help_participacion">
-        <div class="panel" style="background-color:#47A6AF;color:#414042;">
-          <div class="panel-heading">Con respecto al tipo de Participación:</div>
+        <div class="panel" style="background-color:#47A6AF;color:#FFFFFF;">
+          <div class="panel-heading">Con respecto al Tipo de Participación:</div>
           </div>
           <div class="panel-body">
-          <p>
-            La participación <strong>Autor</strong> se corresponde con aquellos Usuarios que desean
-            presentar un Trabajo de Investigación y/o Poster.
-          </p>
-          <p>
-            La participación <strong>Asistente</strong> se corresponde con aquellos Usuarios que desean
-            asistir al Congreso y obtener su Certificado de Asistencia.
-          </p>
+            <p align="justify" style="margin-top:-15px;">
+              La participación <strong style="color:blue;">Centro</strong> se corresponde con aquellos Usuarios que deben  presentar un Trabajo de Investigación
+              el cuál luego de aprobado se publicará en las Memorias del evento (en soporte papel).
+              Esta presentación deberá ser acompañada de un Poster para exhibir el día del Congreso,
+              el cual hace referencia al trabajo presentado.
+              <strong style="color:red;">
+              Tenga en cuenta que solo un representante del centro se podrá inscribir bajo esta modalidad,
+              se recomienda que el mismo sea la Autoridad máxima del centro.
+              </strong>
+            </p>
+            <p align="justify">
+              La participación <strong style="color:blue;">Autor</strong> se corresponde con aquellos miembros de la comunidad científica
+              en general  que desean presentar un Trabajo de Investigación,
+              el cuál luego de aprobado se publicará en las Memorias del evento (en formato digital).
+            </p>
+            <p align="justify">
+              La participación <strong style="color:blue;">Asistente</strong> se corresponde con aquellos Usuarios que desean asistir al Congreso y
+              obtener su Certificado de Asistencia.
+            </p>
+            <p align="justify">
+              Si tiene alguna duda o cunsulta sobre el sistema por favor escribir a: <strong style="color:green;">gestion.concyt@cic.gba.gob.ar</strong>
+            </p>
           </div>
       </div>
   </div>
@@ -40,11 +54,15 @@
     &nbsp;
   </div>
   <div class="col-md-4">
-    <div id="otros_campos_autor">
+    <div id="otros_campos_participacion_centro">
         <div class="field">
-            <%= f.label 'Participación en la Comunidad Científica' %><br />
-            <%= f.select :authors_id , options_from_collection_for_select(Author.all, "id", "nombre"),{prompt: "Seleccionar"},{class: "form-control",style:"width: 360px;"}%><br />
+            <%= f.label 'Centro de Investigación' %><br />
+            <%= f.select :centers_id , options_from_collection_for_select(Center.where('inscripto = 0'), "id", "siglas"),{prompt: "Seleccionar"},{class: "form-control",style:"width: 360px;"}%><br />
         </div>
+    </div>
+    <div class="field">
+      <%= f.label 'Participación en la Comunidad Científica' %><br />
+      <%= f.select :authors_id , options_from_collection_for_select(Author.all, "id", "nombre"),{prompt: "Seleccionar"},{class: "form-control",style:"width: 360px;"}%><br />
     </div>
     <div class="field">
       <%= f.label :nombre %><br />
@@ -66,14 +84,17 @@
         <%= f.label :telefono %><br />
         <%= f.number_field :telefono,:required => true, class: "form-control"%>
     </div>
+    <div id="campos_institucion">
     <div class="field">
-        <%= f.label :tipo_institucion %><br />
-        <%= f.select :tipo_institucion, options_from_collection_for_select(Institution.all, "id", "nombre"),{prompt: "Seleccionar"},{:required => true,class: "form-control"}%>
+        <%= f.label 'Tipo de Institución' %><br />
+        <%= f.select :tipo_institucion, options_from_collection_for_select(Institution.all, "id", "nombre"),{prompt: "Seleccionar"},{class: "form-control"}%>
     </div>
     <div class="field">
-      <%= f.label :institucion %><br />
-      <%= f.text_field :institucion,  :required => true,class: "form-control"%>
+      <%= f.label 'Descripción de la Institución'%><br />
+      <%= f.text_field :institucion,  class: "form-control"%>
     </div>
+    </div>
+
   </div>
   <div class="col-md-4">
     <div class="field">

@@ -18,6 +18,7 @@ class NotificationsController < ApplicationController
 
   def index
     if current_user.rol==2 or current_user.rol==3
+      user_id=current_user.id
       @notificaciones_para_organizador=Notification.where("para_administrador = 1").paginate(:page => params[:page]).order('created_at DESC')
     else
       flash[:alert]="Usted no tiene permiso para estar aquí"

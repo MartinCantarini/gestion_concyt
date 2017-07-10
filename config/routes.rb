@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'presentations/change_user_correccion',:to =>'presentations#change_user_correccion', as: :change_user_correccion
   get 'posters/new_pre'
   get 'presentations/change_state',:to =>'presentations#change_state', as: :change_state_presentation
   get 'posters/join', :to =>'posters#join', as: :join_poster

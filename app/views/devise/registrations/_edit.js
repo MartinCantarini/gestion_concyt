@@ -16,120 +16,65 @@ function habilitar_cambio_contraseña(){
         $("#show").hide();
     });
 }
-function habilitar_div_otros_campos_autor() {
-  if($('#user_tipo_participacion').val()=="1")
-       {
-        $('#otros_campos_autor').show();
-        $('#user_authors_id').attr('required', true);
-       }else{
-            $('#otros_campos_autor').hide();
-            $('#user_authors_id').attr('required', false);
-       }
+function habilitar_campos() {
+  if($('#user_tipo_participacion').val()=="2")
+  {
+    $('#otros_campos_participacion_centro').show();
+    $('#user_centers_id').attr('disabled', true);
+    $('#campos_institucion').hide();
+    $('#user_tipo_institucion').attr('required', false);
+    $('#user_institucion').attr('required', false);
+  }
+  else{
+    $('#otros_campos_participacion_centro').hide();
+    $('#user_centers_id').attr('disabled', false);
+    $('#campos_institucion').show();
+    $('#user_tipo_institucion').attr('required', true);
+    $('#user_institucion').attr('required', true);
+  }
 }
-/*FUNCIÓN PARA MOSTRAR LOS CAMPOS AUXILIARES DE Universidad,
-organismo y centro*/
-// function habilitar_div_otros() {
-//   if($('#user_universidad').val()==parseInt("4"))
+// function habilitar_div_otros_campos_center() {
+//   $('#otros_campos_center').hide();
+//   if($('#user_tipo_institucion').val()=="1")
 //        {
-//         $('#div_otra_universidad').show();
-//         $('#user_otra_universidad').attr('required', true);
-//        }else{
-//             $('#div_otra_universidad').hide();
-//             $('#user_otra_universidad').attr('required', false);
-//        }
-//   if($('#user_organismo').val()==parseInt("4"))
-//        {
-//         $('#div_otro_organismo').show();
-//         $('#user_otro_organismo').attr('required', true);
-//        }else{
-//             $('#div_otro_organismo').hide();
-//             $('#user_otro_organismo').attr('required', false);
-//        }
-//   if($('#user_centro').val()==parseInt("4"))
-//        {
-//         $('#div_otro_centro').show();
-//         $('#user_otro_centro').attr('required',true);
-//        }else{
-//             $('#div_otro_centro').hide();
-//             $('#user_otro_centro').attr('required',false);
-//        }
+//         $('#otros_campos_center').show();
+//         $('#user_centers_id').attr('required', true);
+//         $('#otros_campos_institucion').hide();
+//         $('#user_institucion').attr('required', false);
+//   }
+//   else{
+//         $('#otros_campos_center').hide();
+//         $('#user_centers_id').attr('required', false);
+//         $('#otros_campos_institucion').show();
+//         $('#user_institucion').attr('required', true);
+//   }
 // }
-/*FUNCIÓN PARA MOSTRAR LOS CAMPOS AUXILIARES CUANDO CAMBIA EL VALOR DEL SELECT CORRESPONDIENTE*/
-function habilitar_div_otros_change(){
-  $('#user_tipo_participacion').change(function () {
-      if($(this).val()=="")
-         {
-         $('#otros_campos_login').hide();
-         $('#otros_campos_autor').hide();
-         $('#user_authors_id').attr('required', false);
-         }else{
-              if($(this).val()=="1"){
-                  $('#otros_campos_autor').show();
-                  $('#user_authors_id').attr('required', true);
-              }
-              else{
-                  $('#otros_campos_autor').hide();
-                  $('#user_authors_id').attr('required', false);
-              }
-              $('#otros_campos_login').show();
-        }
-      });
-  // $('#user_tipo_participacion').change(function () {
-  //     if($(this).val()==parseInt("1"))
-  //        {
-  //        $('#div_tipo_beca').show();
-  //        $('#user_tipo_beca').attr('required', true);
-  //        }else{
-  //             $('#div_tipo_beca').hide();
-  //             $('#user_tipo_beca').attr('required', false);
-  //       }
-  //     });
-// $('#user_tipo_participacion').change(function () {
-//     if($(this).val()==parseInt("1"))
-//        {
-//        $('#div_tipo_beca').show();
-//        $('#user_tipo_beca').attr('required', true);
-//        }else{
-//             $('#div_tipo_beca').hide();
-//             $('#user_tipo_beca').attr('required', false);
-//       }
-//     });
-// $('#user_organismo').change(function () {
-//     if($(this).val()==parseInt("4"))
-//        {
-//        $('#div_otro_organismo').show();
-//        $('#user_otro_organismo').attr('required', true);
-//        }else{
-//             $('#div_otro_organismo').hide();
-//             $('#user_otro_organismo').attr('required', false);
-//        }
-//     });
-// $('#user_universidad').change(function () {
-//     if($(this).val()==parseInt("4"))
-//        {
-//        $('#div_otra_universidad').show();
-//        $('#user_otra_universidad').attr('required', true);
-//        }else{
-//             $('#div_otra_universidad').hide();
-//             $('#user_otra_universidad').attr('required', false);
-//        }
-//     });
-// $('#user_centro').change(function () {
-//     if($(this).val()==parseInt("4"))
-//        {
-//        $('#div_otro_centro').show();
-//        $('#user_otro_centro').attr('required',true);
-//        }else{
-//             $('#div_otro_centro').hide();
-//             $('#user_otro_centro').attr('required',false);
-//        }
-//     });
-}
+// function habilitar_div_otros_change_tipoInstitucion(){
+//   $('#user_tipo_institucion').change(function () {
+//       if($(this).val()=="")
+//          {
+//          $('#otros_campos_center').hide();
+//          $('#user_centers_id').attr('required', false);
+//          }else{
+//               if($(this).val()=="1"){
+//                 $('#otros_campos_center').show();
+//                 $('#user_centers_id').attr('required', true);
+//                 $('#otros_campos_institucion').hide();
+//                 $('#user_institucion').attr('required', false);
+//               }
+//               else{
+//                 $('#otros_campos_center').hide();
+//                 $('#user_centers_id').attr('required', false);
+//                 $('#otros_campos_institucion').show();
+//                 $('#user_institucion').attr('required', true);
+//               }
+//         }
+//       });
+// }
 /*FUNCIÓN QUE INVOCA A TODAS LAS ANTERIORES*/
 function start() {
   habilitar_cambio_contraseña();
-  habilitar_div_otros_campos_autor();
-  habilitar_div_otros_change();
+  habilitar_campos();
 }
 
 /*FUNCIÓN INVOCADA AL CARGAR LA PÁGINA*/

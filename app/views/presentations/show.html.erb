@@ -5,8 +5,8 @@
     <div class="col-md-12 col-xs-12">
       <p>Título: <%=@presentacion.titulo%></p>
       <p>Sesión de Trabajo: <%=Session.getSession(@presentacion.session_id)%></p>
+      <p>Subido por: <%=link_to User.getNombreApellidoPresentacion(@presentacion.id),user_path(User.getId(@presentacion.id))%></p>
       <p>Estado de la presentación: <%=State.getStateNombre(@presentacion.state_id)%></p>
-      <p>Tipo de exposición: <%=Exposition.getNombre(@presentacion.exposition_id)%></p>
     </div>
     <div class="col-md-6 col-xs-12">
     <h4>Trabajo</h4>
@@ -33,42 +33,62 @@
   </div>
 </div>
 <%if @puede_enviar_correccion%>
-<div class="row">
-  <div class="col-md-12 col-xs-12">
-  <br /><br />
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+    <%if @puede_seleccionar_evaluador%>
+    <h4>Usuario que se encarga de la corrección<h4>
+    <!-- <%= form_for @presentacion_a_editar ,url: change_user_correccion_path(@presentacion_a_editar)  do |f| %>
+      <%= f.select :user_id,
+      options_from_collection_for_select(User.all, "id", "apellido", f.object.user_id),{class: "form-control", required:true} %>
+      <%= f.submit "Cambiar" %>
+    <% end %> -->
+      <%@usuarios_editores.each do |usuario|%>
+        <%if usuario.id!=@presentacion.user_id%>
+          <%=link_to usuario.nombre + ' ' + usuario.apellido, change_user_correccion_path(:id_presentacion => @presentacion.id, :id_usuario_correccion=> usuario.id),class:"btn btn-default"%>
+        <%else%>
+          <%=link_to usuario.nombre + ' ' + usuario.apellido, change_user_correccion_path(:id_presentacion => @presentacion.id, :id_usuario_correccion=> usuario.id),class:"btn btn-primary"%>
+        <%end%>
+      <%end%>
+    <%end%>
+    <br /><br />
+    </div>
+    <div class="col-md-2 col-xs-12">
+    </div>
+    <%if @puede_evaluar%>
+      <div class="col-md-3 col-xs-12">
+        <%=link_to 'Trabajo en evaluación', change_state_presentation_path(:id => @presentacion.id, :id_state=> 1),class:"btn btn-warning"%>
+      </div>
+      <div class="col-md-2 col-xs-12">
+        <%=link_to 'Aprobar trabajo', change_state_presentation_path(:id => @presentacion.id, :id_state=> 2),class:"btn btn-success"%>
+      </div>
+      <div class="col-md-2 col-xs-12">
+        <%=link_to 'Desaprobar trabajo', change_state_presentation_path(:id => @presentacion.id, :id_state=> 4), class:"btn btn-danger"%>
+      </div>
+      <div class="col-md-1 col-xs-12">
+        <!-- <%=link_to 'Seleccionar trabajo para exponer', change_state_presentation_path(:id => @presentacion.id, :id_state=> 3), class:"btn btn-primary"%> -->
+      </div>
+    <%end%>
+    <div class="col-md-2 col-xs-12">
+    </div>
   </div>
-  <div class="col-md-3 col-xs-12">
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+    <br /><br />
+    </div>
+    <div class="col-md-2 col-xs-12">
+    </div>
+    <div class="col-md-8 col-xs-12">
+    <%= form_tag(new_notification_path,:method => "get", id: "search-form") do %>
+    <p>
+     <label-azul>Nueva corrección:</label-azul> <br/ ><%= text_area_tag :cuerpo, params[:cuerpo], class:"tinymce"%><br>
+     <%= submit_tag "enviar" , class:"btn btn-primary"%>
+     <%= hidden_field_tag :presentation_id , params[:id] %>
+    </p>
+    <% end %>
+    </div>
+    <div class="col-md-2 col-xs-12">
+    </div>
   </div>
-  <div class="col-md-2 col-xs-12">
-    <%=link_to 'Aprobar trabajo', change_state_presentation_path(:id => @presentacion.id, :id_state=> 2),class:"btn btn-default"%>
-  </div>
-  <div class="col-md-3 col-xs-12">
-    <%=link_to 'Seleccionar trabajo para exponer', change_state_presentation_path(:id => @presentacion.id, :id_state=> 3), class:"btn btn-success"%>
-  </div>
-  <div class="col-md-2 col-xs-12">
-    <%=link_to 'Desaprobar trabajo', change_state_presentation_path(:id => @presentacion.id, :id_state=> 4), class:"btn btn-danger"%>
-  </div>
-  <div class="col-md-2 col-xs-12">
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12 col-xs-12">
-  <br /><br />
-  </div>
-  <div class="col-md-2 col-xs-12">
-  </div>
-  <div class="col-md-8 col-xs-12">
-  <%= form_tag(new_notification_path,:method => "get", id: "search-form") do %>
-  <p>
-   <label-azul>Nueva corrección:</label-azul> <br/ ><%= text_area_tag :cuerpo, params[:cuerpo], class:"tinymce"%><br>
-   <%= submit_tag "enviar" , class:"btn btn-primary"%>
-   <%= hidden_field_tag :presentation_id , params[:id] %>
-  </p>
-  <% end %>
-  </div>
-  <div class="col-md-2 col-xs-12">
-  </div>
-</div>
 <%end%>
 <div class="row">
   <div class="col-md-4 col-xs-12">

@@ -27,7 +27,7 @@
           </div>
         <%end%>
       <%end%>
-      <%if @prensenta_poster%>
+      <%if @presenta_poster%>
         <%if @tiene_poster%>
           <div class="col-xs-12" id="inside-md">
             <%=link_to poster_path(Poster.where('id = ?',current_user.poster_id).first.id) do%>
@@ -43,31 +43,16 @@
         <%end%>
       <%end%>
       <%end%>
-      <!-- <div class="col-xs-12" id="inside-md">
-        <%=link_to others_proximamente_path do%>
-          <p style="margin-top: 20px;"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Certificado de Asistencia</p>
-        <%end%>
-      </div> -->
-      <%if @es_administrador or @es_organizador%>
-          <div class="col-xs-12" id="inside-md">
-            <%=link_to notifications_path do%>
-              <p style="margin-top: 25px;"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Notificaciones de Trabajos (<%=@cantidad_notificaciones_sin_ver%>)</p>
-            <%end%>
-          </div>
+      <%if @es_evaluador_trabajo or @es_evaluador_formato or @es_administrador%>
           <div class="col-xs-12" id="inside-md">
             <%=link_to presentations_path do%>
               <p style="margin-top: 25px;"><span class="glyphicon glyphicon-list-alt"></span> Listado de Trabajos de Investigación</p>
             <%end%>
           </div>
-          <div class="col-xs-12" id="inside-md">
-            <%=link_to users_path do%>
-              <p style="margin-top: 25px;"><span class="glyphicon glyphicon-list-alt"></span> Listado de Inscriptos</p>
-            <%end%>
-          </div>
           <%if @es_administrador%>
             <div class="col-xs-12" id="inside-md">
-              <%=link_to others_proximamente_path do%>
-                <p style="margin-top: 25px;"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> ABM</p>
+              <%=link_to users_path do%>
+                <p style="margin-top: 25px;"><span class="glyphicon glyphicon-list-alt"></span> Listado de Inscriptos</p>
               <%end%>
             </div>
           <%end%>

@@ -19,11 +19,11 @@
     </div>
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email,:required => true,class: "form-control"%><br />
+      <%= f.email_field :email,:required => true,class: "form-control",:disabled=>true%><br />
     </div>
     <div class="field">
        <%= f.label 'Tipo de DNI' %><br />
-       <%= f.select :tipo_dni, options_from_collection_for_select(Document.all, "id", "nombre", f.object.tipo_dni),{prompt: "Seleccionar"},{:required => true,class: "form-control", required: true}%><br />
+       <%= f.select :tipo_dni, options_from_collection_for_select(Document.all, "id", "nombre", f.object.tipo_dni),{prompt: "Seleccionar"},{:required => true,class: "form-control"}%><br />
     </div>
     <div class="field">
       <%= f.label 'DNI' %><br />
@@ -38,7 +38,7 @@
     <div class="col-md-4">
       <div class="field">
           <%= f.label :tipo_participacion %><br />
-          <%= f.select :tipo_participacion, options_from_collection_for_select(Participation.all, "id", "nombre", f.object.tipo_participacion),{prompt: "Seleccionar"},{:required => true,class: "form-control"}%>
+          <%= f.select :tipo_participacion, options_from_collection_for_select(Participation.all, "id", "nombre", f.object.tipo_participacion),{prompt: "Seleccionar"},{:disabled=>true,class: "form-control"}%>
       </div>
       <div id="otros_campos_autor">
           <div class="field">
@@ -46,15 +46,22 @@
               <%= f.select :authors_id , options_from_collection_for_select(Author.all, "id", "nombre",f.object.authors_id),{prompt: "Seleccionar"},{class: "form-control",style:"width: 360px;"}%><br />
           </div>
       </div>
+      <div id="campos_institucion">
       <div class="field">
-          <%= f.label :tipo_institucion %><br />
-          <%= f.select :tipo_institucion, options_from_collection_for_select(Institution.all, "id", "nombre", f.object.tipo_institucion),{prompt: "Seleccionar"},{:required => true,class: "form-control"}%>
+          <%= f.label 'Tipo de Institución' %><br />
+          <%= f.select :tipo_institucion, options_from_collection_for_select(Institution.all, "id", "nombre", f.object.tipo_institucion),{prompt: "Seleccionar"},{class: "form-control"}%>
       </div>
       <div class="field">
-        <%= f.label :institucion %><br />
-        <%= f.text_field :institucion,  :required => true,class: "form-control"%>
+        <%= f.label 'Descripción de la Institución' %><br />
+        <%= f.text_field :institucion, class: "form-control"%>
       </div>
-
+      </div>
+      <div id="otros_campos_participacion_centro">
+          <div class="field">
+              <%= f.label 'Centro de Investigación' %><br />
+              <%= f.select :centers_id , options_from_collection_for_select(Center.all, "id", "siglas",f.object.centers_id),{prompt: "Seleccionar"},{class: "form-control",style:"width: 360px;"}%><br />
+          </div>
+      </div>
     <div class="field">
       <%= f.label 'Contraseña actual' %> <spam style="font-size:12px;">(necesaria para efectuar los cambios)</spam><br />
       <%= f.password_field :current_password, :required => true,class: "form-control",autocomplete: "off" %><br />
